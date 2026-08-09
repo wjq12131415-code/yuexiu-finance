@@ -1,0 +1,1190 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>越秀集团 - 跨境财富管理产品库</title>
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;800&display=swap');
+
+        :root {
+            --navy: #123243;
+            --deep: #091f2b;
+            --orange: #d45b25;
+            --gold: #b8914b;
+            --ivory: #f7f3e9;
+            --muted: #66777e;
+            --line: #ded9cc;
+            --bg-card: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            color: #233942;
+            background: var(--ivory);
+            font-family: "Noto Sans SC", "Microsoft YaHei", sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        button, input, select {
+            font: inherit;
+            outline: none;
+        }
+
+        button, a {
+            color: inherit;
+            transition: all 0.2s ease;
+        }
+
+        header {
+            height: 76px;
+            padding: 0 clamp(22px, 6vw, 90px);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(247, 243, 233, 0.94);
+            border-bottom: 1px solid var(--line);
+            position: sticky;
+            top: 0;
+            z-index: 30;
+            backdrop-filter: blur(15px);
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .brand i {
+            width: 5px;
+            height: 42px;
+            border-radius: 8px;
+            background: var(--orange);
+            box-shadow: 8px 0 #edc4ac;
+        }
+
+        .brand.inverse i {
+            box-shadow: 8px 0 rgba(212, 91, 37, 0.2);
+        }
+
+        .brand div {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .brand strong {
+            font-family: serif;
+            font-size: 18px;
+            letter-spacing: 0.16em;
+            color: var(--navy);
+        }
+
+        .brand.inverse strong {
+            color: white;
+        }
+
+        .brand small {
+            color: var(--muted);
+            font-size: 10px;
+            letter-spacing: 0.08em;
+        }
+
+        nav {
+            display: flex;
+            gap: 30px;
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        nav a {
+            text-decoration: none;
+        }
+        
+        nav a:hover {
+            color: var(--orange);
+        }
+
+        .hero {
+            min-height: 570px;
+            padding: 80px clamp(24px, 8vw, 120px);
+            display: grid;
+            grid-template-columns: 1.4fr 0.6fr;
+            align-items: center;
+            gap: 70px;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, #f9f6ed 55%, #dce9e8);
+        }
+
+        .hero:after {
+            content: "";
+            position: absolute;
+            left: -5%;
+            right: -5%;
+            bottom: -80px;
+            height: 210px;
+            border-radius: 50% 55% 0 0;
+            background: linear-gradient(12deg, #17394a 45%, #37636d 46%, #85a6a1 60%, transparent 61%);
+            opacity: 0.82;
+            pointer-events: none;
+        }
+
+        .hero-copy, .hero-card {
+            position: relative;
+            z-index: 1;
+        }
+
+        .eyebrow {
+            margin: 0 0 14px;
+            color: var(--orange);
+            font-size: 11px;
+            letter-spacing: 0.2em;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+
+        .hero h1 {
+            margin: 0;
+            color: var(--navy);
+            font: 700 clamp(45px, 6vw, 76px)/1.16 serif;
+            letter-spacing: 0.04em;
+        }
+
+        .hero h1 em {
+            color: var(--orange);
+            font-style: normal;
+        }
+
+        .hero-copy > p:not(.eyebrow) {
+            max-width: 650px;
+            margin: 25px 0 0;
+            color: #5a6d72;
+            font-size: 17px;
+            line-height: 1.9;
+        }
+
+        .actions {
+            display: flex;
+            gap: 14px;
+            margin-top: 36px;
+        }
+
+        .actions a {
+            padding: 14px 22px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 13px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .actions a.primary {
+            color: white;
+            background: var(--orange);
+        }
+        
+        .actions a.primary:hover {
+            background: #b84b1a;
+        }
+
+        .actions a.secondary {
+            border: 1px solid #879a9c;
+            background: #faf7ef;
+        }
+        
+        .actions a.secondary:hover {
+            background: white;
+            border-color: var(--navy);
+        }
+
+        .hero-card {
+            padding: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.68);
+            box-shadow: 0 22px 60px rgba(22, 52, 64, 0.13);
+            backdrop-filter: blur(12px);
+        }
+
+        .hero-card > span {
+            font-size: 11px;
+            color: var(--muted);
+        }
+
+        .hero-card > b {
+            display: block;
+            margin: 5px 0 22px;
+            color: var(--navy);
+            font-size: 19px;
+        }
+
+        .hero-card > div {
+            display: flex;
+            align-items: baseline;
+            gap: 13px;
+            padding: 15px 0;
+            border-top: 1px solid var(--line);
+        }
+
+        .hero-card strong {
+            color: var(--orange);
+            font-size: 31px;
+            font-weight: 800;
+        }
+
+        .hero-card small {
+            color: var(--muted);
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .journeys {
+            padding: 38px clamp(24px, 6vw, 90px);
+            background: var(--navy);
+            color: white;
+        }
+
+        .journeys > p {
+            margin: 0 0 18px;
+            color: #abc0c7;
+            font-size: 12px;
+        }
+
+        .journeys > div {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 1px;
+            background: #496675;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .journeys button {
+            min-height: 88px;
+            padding: 15px 20px;
+            text-align: left;
+            color: white;
+            border: 0;
+            background: var(--navy);
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: 500;
+            line-height: 1.4;
+        }
+
+        .journeys button:hover {
+            background: #1b4557;
+        }
+
+        .journeys span {
+            display: block;
+            font-size: 11px;
+            color: #85a6a1;
+            margin-bottom: 8px;
+            font-family: Monaco, monospace;
+            letter-spacing: 0.1em;
+        }
+
+        .catalog {
+            padding: 70px clamp(24px, 6vw, 90px);
+        }
+
+        .catalog .title {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .catalog .title h2 {
+            margin: 0;
+            font-size: 32px;
+            color: var(--navy);
+        }
+
+        #count {
+            margin: 0;
+            font-size: 13px;
+            color: var(--muted);
+        }
+
+        #count b {
+            color: var(--orange);
+        }
+
+        .filters {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 30px;
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .filters label, .filters select, .filters input[type="text"] {
+            font-size: 13px;
+            color: var(--navy);
+        }
+        
+        .filters .search {
+            display: flex;
+            align-items: center;
+            background: var(--ivory);
+            padding: 0 12px;
+            border-radius: 4px;
+            flex-grow: 1;
+            min-width: 250px;
+            border: 1px solid transparent;
+        }
+
+        .filters .search:focus-within {
+            border-color: var(--line);
+        }
+
+        .filters .search span {
+            font-size: 16px;
+            color: var(--muted);
+            margin-right: 8px;
+        }
+
+        .filters input[type="text"] {
+            border: 0;
+            background: transparent;
+            padding: 10px 0;
+            width: 100%;
+        }
+        
+        .filters input[type="text"]::placeholder {
+            color: #a0b2b8;
+        }
+
+        .filters select {
+            padding: 10px 14px;
+            border: 1px solid var(--line);
+            border-radius: 4px;
+            background: white;
+            cursor: pointer;
+        }
+
+        .filters .toggle {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            padding: 0 10px;
+            font-weight: 500;
+        }
+        
+        .filters input[type="checkbox"] {
+            accent-color: var(--orange);
+            width: 16px;
+            height: 16px;
+            cursor: pointer;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 25px;
+        }
+
+        .product {
+            background: var(--bg-card);
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .product:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.06);
+            border-color: transparent;
+        }
+
+        .tags {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+
+        .tags span, .tags b {
+            font-size: 11px;
+            padding: 4px 8px;
+            border-radius: 4px;
+            background: var(--ivory);
+            color: var(--navy);
+            font-weight: 500;
+        }
+
+        .tags b {
+            background: rgba(212, 91, 37, 0.1);
+            color: var(--orange);
+        }
+
+        .product small {
+            font-size: 11px;
+            color: var(--muted);
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .product h3 {
+            margin: 0 0 12px;
+            font-size: 18px;
+            color: var(--navy);
+            line-height: 1.4;
+        }
+
+        .product p {
+            margin: 0 0 20px;
+            font-size: 13px;
+            color: var(--muted);
+            line-height: 1.6;
+            flex-grow: 1;
+        }
+
+        .aud {
+            background: #fcfcfc;
+            border: 1px dashed var(--line);
+            padding: 12px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            font-size: 12px;
+        }
+
+        .aud b {
+            display: block;
+            margin-bottom: 4px;
+            color: var(--navy);
+        }
+
+        .aud span {
+            color: #5a6d72;
+            line-height: 1.5;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .product button {
+            background: transparent;
+            border: 1px solid var(--line);
+            padding: 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--navy);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .product button:hover {
+            background: var(--navy);
+            color: white;
+            border-color: var(--navy);
+        }
+        
+        .product button span {
+            color: var(--orange);
+            font-size: 16px;
+            pointer-events: none; /* Make sure clicking span registers on button */
+        }
+
+        .empty {
+            grid-column: 1 / -1;
+            padding: 80px 20px;
+            text-align: center;
+            color: var(--muted);
+            background: white;
+            border-radius: 8px;
+            border: 1px dashed var(--line);
+        }
+
+        .more {
+            display: block;
+            margin: 40px auto 0;
+            padding: 12px 30px;
+            background: transparent;
+            border: 1px solid var(--muted);
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            color: var(--navy);
+            font-weight: 600;
+        }
+        
+        .more:hover {
+            background: var(--line);
+        }
+
+        .path {
+            padding: 80px clamp(24px, 6vw, 90px);
+            background: white;
+        }
+
+        .path h2 {
+            margin: 0 0 40px;
+            font-size: 32px;
+            color: var(--navy);
+        }
+
+        .path > div {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+        }
+
+        .path article {
+            background: var(--ivory);
+            padding: 30px 25px;
+            border-radius: 8px;
+            position: relative;
+        }
+
+        .path article span {
+            font-family: serif;
+            font-size: 48px;
+            font-weight: 800;
+            color: var(--line);
+            line-height: 1;
+            display: block;
+            margin-bottom: 20px;
+        }
+
+        .path article b {
+            display: block;
+            font-size: 17px;
+            color: var(--navy);
+            margin-bottom: 8px;
+        }
+
+        .path article small {
+            font-size: 13px;
+            color: var(--muted);
+            line-height: 1.5;
+            display: block;
+        }
+
+        footer {
+            background: var(--deep);
+            color: #879a9c;
+            padding: 60px clamp(24px, 6vw, 90px);
+            display: flex;
+            justify-content: space-between;
+            gap: 60px;
+            flex-wrap: wrap;
+        }
+
+        footer b {
+            display: block;
+            color: white;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 12px;
+            line-height: 1.8;
+            max-width: 600px;
+        }
+
+        #modal {
+            position: relative;
+            z-index: 100;
+        }
+        
+        #modal:empty {
+            display: none;
+        }
+
+        .backdrop {
+            position: fixed;
+            inset: 0;
+            background: rgba(9, 31, 43, 0.6);
+            backdrop-filter: blur(4px);
+            display: flex;
+            justify-content: flex-end;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .drawer {
+            background: white;
+            width: 100%;
+            max-width: 640px;
+            height: 100%;
+            padding: 50px 40px;
+            overflow-y: auto;
+            position: relative;
+            animation: slideIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: -10px 0 40px rgba(0,0,0,0.1);
+            /* Mobile interaction fix: ensure pointer-events are auto */
+            pointer-events: auto;
+        }
+
+        .drawer .x {
+            position: absolute;
+            top: 25px;
+            right: 25px;
+            background: #f1efea;
+            border: 0;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            font-size: 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--navy);
+            z-index: 2; /* Make sure it's clickable */
+        }
+        
+        .drawer .x:hover {
+            background: var(--line);
+        }
+
+        .drawer h2 {
+            margin: 10px 0 20px;
+            font-size: 26px;
+            color: var(--navy);
+            line-height: 1.3;
+        }
+
+        .drawer .lead {
+            font-size: 15px;
+            line-height: 1.7;
+            color: #4a5c63;
+            margin-bottom: 30px;
+        }
+
+        .drawer h4 {
+            font-size: 14px;
+            color: var(--navy);
+            margin: 30px 0 10px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .drawer p {
+            font-size: 13px;
+            line-height: 1.7;
+            color: var(--muted);
+            margin: 0;
+        }
+
+        .drawer p.pre {
+            white-space: pre-wrap;
+        }
+
+        .drawer p.risk {
+            color: #a84b25;
+            background: #fcf4f1;
+            padding: 12px;
+            border-radius: 4px;
+        }
+        
+        .drawer p.note {
+            font-size: 11px;
+            margin-top: 30px;
+            border-top: 1px dashed var(--line);
+            padding-top: 15px;
+            text-align: center;
+        }
+
+        .drawer dl {
+            margin: 0;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+        }
+
+        .drawer dl div {
+            background: var(--ivory);
+            padding: 12px 15px;
+            border-radius: 4px;
+        }
+
+        .drawer dt {
+            font-size: 11px;
+            color: var(--muted);
+            margin-bottom: 4px;
+            font-weight: 700;
+        }
+
+        .drawer dd {
+            margin: 0;
+            font-size: 13px;
+            color: var(--navy);
+            line-height: 1.5;
+        }
+
+        .official {
+            margin-top: 40px;
+            padding: 25px;
+            background: #f4f8f7;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .official b {
+            display: block;
+            color: var(--navy);
+            font-size: 14px;
+            margin-bottom: 4px;
+        }
+
+        .official small {
+            color: var(--muted);
+            font-size: 12px;
+            display: block;
+        }
+
+        .official a {
+            background: var(--orange);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 13px;
+            white-space: nowrap;
+            text-align: center;
+        }
+        
+        .official a:hover {
+            background: #b84b1a;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideIn {
+            from { transform: translateX(100%); }
+            to { transform: translateX(0); }
+        }
+
+        @media (max-width: 1024px) {
+            .hero {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                padding-bottom: 120px;
+            }
+            .hero-card {
+                max-width: 500px;
+            }
+            .path > div {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .journeys > div {
+                grid-template-columns: 1fr;
+            }
+            .filters {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .filters .search {
+                width: 100%;
+            }
+            .official {
+                flex-direction: column;
+                align-items: stretch;
+                text-align: center;
+            }
+            .grid {
+                grid-template-columns: 1fr; /* Single column on mobile */
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .path > div {
+                grid-template-columns: 1fr;
+            }
+            nav {
+                display: none; /* Hide nav on very small screens for simplicity */
+            }
+            .drawer {
+                padding: 30px 20px;
+            }
+        }
+        
+        /* Mobile specific fix for buttons */
+        @media (hover: none) {
+            .product button:active {
+                background: var(--navy);
+                color: white;
+            }
+            .drawer .x:active {
+                background: var(--line);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Container where JS will inject everything -->
+    <div id="app"></div>
+
+    <script>
+        // Store product data directly in JS as requested
+        window.PRODUCTS = [
+            {"id":"CHB-01-01","provider":"创兴银行","category":"开立账户","name":"遥距开户 (RAO)","summary":"全新及存量个人客户通过“创兴流动理财”以手机遥距开立账户及相关银行服务。","audience":"内地居民及港澳居民","scenario":"快速开立香港个人银行账户及服务","journey":"开户与通行","core":true,"details":[{"label":"币种","value":"港元及多种外币"},{"label":"门槛/额度","value":"账户不设最低结余要求；以最新条款为准"},{"label":"期限","value":"不适用"},{"label":"办理渠道","value":"创兴流动理财"},{"label":"办理流程/所需资料","value":"阅读条款→身份验证→选择账户→填写数据→设置密码→确认及提交→按要求完成后续验证。"},{"label":"费用/利率/定价说明","value":"遥距开户服务无须收费"}],"advantages":"24小时申请；可申请多币种/往来/定期及投资账户；成功开户后可实时使用网上银行服务。","risk":"国内证件持有人需身处香港提交申请","process":"阅读条款→身份验证→选择账户→填写数据→设置密码→确认及提交→按要求完成后续验证。","note":"","officialUrl":"https://www.chbank.com/tc/personal/digital-services/rao/index.shtml","officialSpecific":true},
+            {"id":"CHB-01-02","provider":"创兴银行","category":"开立账户","name":"临柜开户","summary":"全新及存量个人客户透过分行柜位开立账户及相关银行服务。","audience":"内地居民及港澳居民","scenario":"开立香港个人银行账户及服务","journey":"开户与通行","core":false,"details":[{"label":"币种","value":"港元及多种外币"},{"label":"门槛/额度","value":"账户不设最低结余要求；以最新条款为准"},{"label":"期限","value":"不适用"},{"label":"办理渠道","value":"分行渠道"},{"label":"办理流程/所需资料","value":"分行开立"},{"label":"费用/利率/定价说明","value":"不适用"}],"advantages":"- 营业时间内申请；可申请多币种/往来/定期及投资账户；成功开户后可实时使用网上银行服务。\n- 一站式开立账户、定期存款、投资账户及信用卡服务；成功开户后可实时使用提款卡和网上银行服务，费用全免。","risk":"不适用","process":"分行开立","note":"","officialUrl":"https://www.chbank.com/tc/personal/index.shtml","officialSpecific":false},
+            {"id":"CHB-01-03","provider":"创兴银行","category":"开立账户","name":"开立保管箱","summary":"安心存放重要文件/物品","audience":"内地居民及港澳居民","scenario":"管理个人重要文件/物品","journey":"开户与通行","core":false,"details":[{"label":"币种","value":"不适用"},{"label":"门槛/额度","value":"不适用"},{"label":"期限","value":"不适用"},{"label":"办理渠道","value":"分行"},{"label":"办理流程/所需资料","value":"分行开立"},{"label":"费用/利率/定价说明","value":"按不同保管箱而定"}],"advantages":"提供不同尺寸保管箱, 方便存放个人重要文件/物品","risk":"不适用","process":"分行开立","note":"","officialUrl":"https://www.chbank.com/tc/personal/index.shtml","officialSpecific":false},
+            {"id":"CHB-02-01","provider":"创兴银行","category":"存款与外汇","name":"悦秀理财","summary":"配置专属客户经理照顾个人化理财需要及尊享较高定期存款利率及汇率优惠","audience":"内地居民及港澳居民(富裕客群)","scenario":"富裕客户财富承传及保障","journey":"资金管理与汇兑","core":true,"details":[{"label":"币种","value":"港元及多种外币"},{"label":"门槛/额度","value":"总资产达等值港币一百万元或以上的高净值客群"},{"label":"期限","value":"不适用"},{"label":"办理渠道","value":"流动理财或分行"},{"label":"办理流程/所需资料","value":"于RAO或分行开立账户"},{"label":"费用/利率/定价说明","value":"优惠定期利率及指定银行收费折扣"}],"advantages":"- 配置专属客户经理照顾个人化理财需要\n- 尊享优惠CASA存款利率、定期存款利率及汇率\n- 享用分行特设优先专柜服务","risk":"不适用","process":"于RAO或分行开立账户","note":"","officialUrl":"https://www.chbank.com/tc/personal/index.shtml","officialSpecific":false},
+            {"id":"CHB-02-02","provider":"创兴银行","category":"存款与外汇","name":"悦进理财","summary":"抓紧自主理财\n变身「理财达人」","audience":"内地居民及港澳居民(年轻客群)","scenario":"透过电子渠道让年轻客户「随时随地」理财概念","journey":"资金管理与汇兑","core":false,"details":[{"label":"币种","value":"港元及多种外币"},{"label":"门槛/额度","value":"总资产达等值港币二十万元或以上的年轻客户"},{"label":"期限","value":"不适用"},{"label":"办理渠道","value":"流动理财或分行"},{"label":"办理流程/所需资料","value":"于RAO或分行开立账户"},{"label":"费用/利率/定价说明","value":"使用银行服务享额外信用卡积分优惠"}],"advantages":"- 迎合自主的理财喜好，以数码自主理财为核心\n- 网购、外汇、EPS零售消费及投资等可赚取信用卡积分","risk":"不适用","process":"于RAO或分行开立账户","note":"","officialUrl":"https://www.chbank.com/tc/personal/index.shtml","officialSpecific":false},
+            {"id":"CHB-02-03","provider":"创兴银行","category":"存款与外汇","name":"定期存款","summary":"以约定期限锁定资金，获取相应存款利息的稳健现金管理工具。","audience":"内地居民及港澳居民","scenario":"闲置资金分层、短中期流动性管理及多币种资产配置。","journey":"资金管理与汇兑","core":true,"details":[{"label":"币种","value":"港元及多种外币"},{"label":"门槛/额度","value":"起存额以币种及渠道公告为准"},{"label":"期限","value":"多种存款期可选"},{"label":"办理渠道","value":"网上银行、流动理财或分行"},{"label":"办理流程/所需资料","value":"持有结算账户→选择币种/期限/金额→确认利率→存入→到期处理。"},{"label":"费用/利率/定价说明","value":"利率以存入当日银行公布或确认结果为准。"}],"advantages":"多币种；多期限；可与现金流及汇率观点配合。","risk":"提前支取、再投资、汇率（外币存款）及存款保障适用范围风险。","process":"持有结算账户→选择币种/期限/金额→确认利率→存入→到期处理。","note":"","officialUrl":"https://www.chbank.com/tc/personal/banking-services/account-services/fixed-deposit-account/index.shtml","officialSpecific":true},
+            {"id":"CHB-02-04","provider":"创兴银行","category":"存款与外汇","name":"港币／外币储蓄户口","summary":"透过港币／外币储蓄户口随时以优惠差价买卖不同货币。","audience":"内地居民及港澳居民","scenario":"储备足够港币或外币应付旅游、升学或工作等日常所需，使资金调动更富弹性","journey":"资金管理与汇兑","core":false,"details":[{"label":"币种","value":"港元及多种外币"},{"label":"门槛/额度","value":"起存额以币种及渠道公告为准"},{"label":"期限","value":"没有存款期"},{"label":"办理渠道","value":"网上银行、流动理财或分行"},{"label":"办理流程/所需资料","value":"于网上银行、流动理财或分行存入或转出资金"},{"label":"费用/利率/定价说明","value":"利息按每日结余计算"}],"advantages":"多币种；可将资金转做定期存款，获享更高利息回报","risk":"汇率（外币存款）及存款保障适用范围风险","process":"于网上银行、流动理财或分行存入或转出资金","note":"","officialUrl":"https://www.chbank.com/tc/personal/index.shtml","officialSpecific":false},
+            {"id":"CHB-02-05","provider":"创兴银行","category":"存款与外汇","name":"往来户口","summary":"港币／美元／人民币往来户口配备免费支票簿，简易签发支票支付日常账务。","audience":"内地居民及港澳居民","scenario":"处理日常账户拨备或业务往来带来资金调拨之便","journey":"资金管理与汇兑","core":false,"details":[{"label":"币种","value":"港币／美元／人民币"},{"label":"门槛/额度","value":"起存额以币种及渠道公告为准"},{"label":"期限","value":"没有存款期"},{"label":"办理渠道","value":"网上银行、流动理财或分行"},{"label":"办理流程/所需资料","value":"于网上银行、流动理财或分行存入或转出资金"},{"label":"费用/利率/定价说明","value":"没有利息"}],"advantages":"每月附奉月结单，往来记录一目了然","risk":"汇率（外币存款）及存款保障适用范围风险","process":"于网上银行、流动理财或分行存入或转出资金","note":"","officialUrl":"https://www.chbank.com/tc/personal/index.shtml","officialSpecific":false},
+            {"id":"CHB-02-06","provider":"创兴银行","category":"存款与外汇","name":"出粮户口服务","summary":"透过自动转账形式定期支薪","audience":"内地居民及港澳居民","scenario":"管理薪金及个人财务","journey":"资金管理与汇兑","core":false,"details":[{"label":"币种","value":"港币"},{"label":"门槛/额度","value":"不设最低结余限制"},{"label":"期限","value":"没有存款期"},{"label":"办理渠道","value":"分行"},{"label":"办理流程/所需资料","value":"通知雇主更改出粮户口"},{"label":"费用/利率/定价说明","value":"利息按每日结余计算"}],"advantages":"配备多项理财方案，服务覆盖定期存款、储蓄增值、投资理财、各类信贷、强积金管理等","risk":"存款保障适用范围风险","process":"通知雇主更改出粮户口","note":"","officialUrl":"https://www.chbank.com/tc/personal/index.shtml","officialSpecific":false},
+            {"id":"CHB-02-07","provider":"创兴银行","category":"存款与外汇","name":"i-Kid港币储蓄户口","summary":"透过港币储蓄户口为小朋友储蓄","audience":"内地居民及港澳居民","scenario":"储备足够港币应付旅游、升学或工作等日常所需，使资金调动更富弹性","journey":"资金管理与汇兑","core":false,"details":[{"label":"币种","value":"港币"},{"label":"门槛/额度","value":"不设最低结余限制"},{"label":"期限","value":"没有存款期"},{"label":"办理渠道","value":"分行"},{"label":"办理流程/所需资料","value":"分行开立账户"},{"label":"费用/利率/定价说明","value":"利息按每日结余计算"}],"advantages":"从小养成储蓄的习惯","risk":"存款保障适用范围风险","process":"分行开立账户","note":"","officialUrl":"https://www.chbank.com/tc/personal/index.shtml","officialSpecific":false},
+            {"id":"CHB-02-08","provider":"创兴银行","category":"存款与外汇","name":"智安存","summary":"资金保障","audience":"内地居民及港澳居民","scenario":"将全部或部分之银行存款锁定于「智安存」账户而防止因欺诈导致的资金外流","journey":"资金管理与汇兑","core":false,"details":[{"label":"币种","value":"港元及多种外币"},{"label":"门槛/额度","value":"不设最低结余限制"},{"label":"期限","value":"没有存款期"},{"label":"办理渠道","value":"网上银行、流动理财或分行"},{"label":"办理流程/所需资料","value":"于网上银行、流动理财或分行开立户口，若想转出资金需亲临分行办理"},{"label":"费用/利率/定价说明","value":"利息按每日结余计算"}],"advantages":"- 支持多币种储蓄账户及定期存款服务\n- 根据个人需要为任何金额的资金上锁\n- 受保护的「智安存」账户资金将能按现行利率继续赚取利息","risk":"存款保障适用范围风险","process":"于网上银行、流动理财或分行开立户口，若想转出资金需亲临分行办理","note":"","officialUrl":"https://www.chbank.com/tc/personal/index.shtml","officialSpecific":false},
+            {"id":"CHB-02-09","provider":"创兴银行","category":"存款与外汇","name":"兑换服务","summary":"客户可按当时汇率，进行兑换交易。","audience":"内地居民及港澳居民","scenario":"满足投资、资产配置、旅游、留学、和公干等跨币种需求。\n客户需持有外币账户。","journey":"资金管理与汇兑","core":true,"details":[{"label":"币种","value":"港元及多种外币"},{"label":"门槛/额度","value":"线上最低交易金额为等值50港元"},{"label":"期限","value":"实时交易"},{"label":"办理渠道","value":"网上银行、流动理财或分行"},{"label":"办理流程/所需资料","value":"须持有外币账户→选择买入和卖出的币种/金额/汇率→完成交易"},{"label":"费用/利率/定价说明","value":"没有交易手续费。汇率以交易时认结果为准。"}],"advantages":"多币种；多渠道；交易可靠","risk":"汇率风险。","process":"须持有外币账户→选择买入和卖出的币种/金额/汇率→完成交易","note":"","officialUrl":"https://www.chbank.com/tc/personal/index.shtml","officialSpecific":false},
+            {"id":"CHB-03-01","provider":"创兴银行","category":"财富管理","name":"公募基金","summary":"由专业基金经理按基金的投资目标及政策分散投资于不同的资产或项目的集体投资计划。","audience":"内地居民及港澳居民","scenario":"有意分散投资于不同资产或项目上作资产配置，且可承受有关投资风险的客户。","journey":"投资与增值","core":true,"details":[{"label":"币种","value":"港元、美元、人民币(离岸)、欧元、英镑、加元、瑞士法郎、日圆、澳元、纽元，按产品而定"},{"label":"门槛/额度","value":"最低认购金额：\n分行：等值港元2万\n网上/流动理财：等值港元100 (累计类别)；等值港元500 (分派类别)"},{"label":"期限","value":"按所选产品，一般没有固定投资期限"},{"label":"办理渠道","value":"流动理财、网上银行及分行"},{"label":"办理流程/所需资料","value":"开立投资账户→存入资金至结算账户→风险评估→产品适配→申购及持续服务。\n\n‧ 必须同时开立港币储蓄或往来账户、多种货币储蓄账户作为投资账户的结算账户。\n‧ 开立投资账户必须提供住宅、公司业务地址或永久地址证明"},{"label":"费用/利率/定价说明","value":"银行收取认购费/转换费，产品费用按销售文件披露"}],"advantages":"分散投资风险；容许零售客户间接投资于高门槛/面向机构客户的投资产品 (例如债券、金融衍生工具等)；提供不同货币/分红选择","risk":"以产品销售文件披露为准","process":"开立投资账户→存入资金至结算账户→风险评估→产品适配→申购及持续服务。\n\n‧ 必须同时开立港币储蓄或往来账户、多种货币储蓄账户作为投资账户的结算账户。\n‧ 开立投资账户必须提供住宅、公司业务地址或永久地址证明","note":"","officialUrl":"https://www.chbank.com/tc/personal/index.shtml","officialSpecific":false},
+            {"id":"CHB-03-02","provider":"创兴银行","category":"财富管理","name":"股票挂钩投资","summary":"潜在回报取决于挂钩个股或一篮子股票的价格表现的结构性金融产品。","audience":"内地居民及港澳居民","scenario":"预料股市于短期内窄幅上落，有意透过股票挂钩投资进行资本增值，且可承受有关投资风险的客户。","journey":"投资与增值","core":false,"details":[{"label":"币种","value":"港元、美元、人民币(离岸)、欧元、英镑、加元、瑞士法郎、日圆、澳元、纽元，按产品而定"},{"label":"门槛/额度","value":"最低为等值港元30万，其后以港元1万面值递增"},{"label":"期限","value":"按所选产品，一般为3个月至11个月"},{"label":"办理渠道","value":"分行"},{"label":"办理流程/所需资料","value":"开立投资账户→存入资金至结算账户→风险评估→产品适配→申购及持续服务。\n\n‧ 必须同时开立港币储蓄或往来账户、多种货币储蓄账户作为投资账户的结算账户。\n‧ 必须于创兴证券开立证券账户，以存放以实物结算的股票。\n‧ 开立投资账户必须提供住宅、公司业务地址或永久地址证明\n‧ 必须具衍生产品的知识，并必须有股票挂钩结构性投资产品的投资经验。"},{"label":"费用/利率/定价说明","value":"客户无需支付交易费用"}],"advantages":"有机会赚取比股息较高的潜在回报；投资期相对较短及灵活；设有多种产品结构 (提早赎回机制、气垫机制等)","risk":"以产品销售文件披露为准","process":"开立投资账户→存入资金至结算账户→风险评估→产品适配→申购及持续服务。\n\n‧ 必须同时开立港币储蓄或往来账户、多种货币储蓄账户作为投资账户的结算账户。\n‧ 必须于创兴证券开立证券账户，以存放以实物结算的股票。\n‧ 开立投资账户必须提供住宅、公司业务地址或永久地址证明\n‧ 必须具衍生产品的知识，并必须有股票挂钩结构性投资产品的投资经验。","note":"","officialUrl":"https://www.chbank.com/tc/personal/index.shtml","officialSpecific":false},
+            {"id":"CHB-03-03","provider":"创兴银行","category":"财富管理","name":"跨境理财通（南向通）","summary":"便利大湾区内地合资格居民投资香港合资格理财产品的跨境财富管理服务。","audience":"内地居民","scenario":"希望在合规框架下配置香港存款、基金、外币挂钩投资或债券等合资格产品。","journey":"投资与增值","core":true,"details":[{"label":"币种","value":"人民币跨境汇划；香港端产品币种按产品而定"},{"label":"门槛/额度","value":"额度、产品范围及投资门槛以最新监管与银行文件为准"},{"label":"期限","value":"按所选产品"},{"label":"办理渠道","value":"流动理财、网上银行及指定分行"},{"label":"办理流程/所需资料","value":"资格核验→开立/配对账户→资金汇入→风险评估→产品适配*→申购及持续服务。\n\n*产品适配只适用于投资产品"},{"label":"费用/利率/定价说明","value":"各产品费用、汇率及银行收费分别披露。"}],"advantages":"资金跨境闭环；合规投资于境外合资格理财产品；支持大湾区个人资产多元配置。","risk":"市场、信用、利率、汇率、流动性、跨境政策与额度、产品适当性风险。具体以南向通服务概览及个别产品销售文件披露为准","process":"资格核验→开立/配对账户→资金汇入→风险评估→产品适配*→申购及持续服务。\n\n*产品适配只适用于投资产品","note":"","officialUrl":"https://www.chbank.com/tc/personal/wealth-management/wmc/index.shtml","officialSpecific":true},
+            {"id":"CHB-03-04","provider":"创兴银行","category":"财富管理","name":"人寿保险 (香港人寿)","summary":"提供保障与财富传承的长期金融工具，兼具风险防护与资产规划功能。","audience":"内地居民及港澳居民","scenario":"需要家庭保障、财富传承、长期资产配置及跨境教育/退休资金安排。","journey":"投资与增值","core":false,"details":[{"label":"币种","value":"港元、人民币、美元及多种外币"},{"label":"门槛/额度","value":"最低保额以币种及产品计划为准，具体详见产品说明书"},{"label":"期限","value":"按所选产品"},{"label":"办理渠道","value":"分行"},{"label":"办理流程/所需资料","value":"持有结算账户→财务需要分析→选择合适产品→销售说明/保险利益说明文件/《重要声明》之风险及条款→评估拟投保之产品是否适合客户→投保申请/缴费方式→提交申请资料/缴付保费→健康核保→确认保单"},{"label":"费用/利率/定价说明","value":"保费及分红以产品条款及当日公布为准。"}],"advantages":"1. 保障与传承：提供身故赔偿，支持财富顺利传承。\n2. 多币种灵活性：支持港元及外币缴付，满足跨境需求。\n3. 长期资产配置：兼具保障与投资价值，助力财富稳健增长。","risk":"健康核保、退保损失、汇率风险（外币保单）、分红/投资回报不保证。","process":"持有结算账户→财务需要分析→选择合适产品→销售说明/保险利益说明文件/《重要声明》之风险及条款→评估拟投保之产品是否适合客户→投保申请/缴费方式→提交申请资料/缴付保费→健康核保→确认保单","note":"","officialUrl":"https://www.chbank.com/tc/personal/index.shtml","officialSpecific":false},
+            {"id":"CHB-03-05","provider":"创兴银行","category":"财富管理","name":"人寿保险 (经纪转介)","summary":"提供保障与财富传承的长期金融工具，兼具风险防护与资产规划功能。","audience":"内地居民及港澳居民","scenario":"需要家庭保障、财富传承、长期资产配置及跨境教育/退休资金安排。","journey":"投资与增值","core":false,"details":[{"label":"币种","value":"港元、人民币、美元及多种外币"},{"label":"门槛/额度","value":"最低保额以币种及产品计划为准，具体详见产品说明书"},{"label":"期限","value":"按所选产品"},{"label":"办理渠道","value":"经分行转介服务"},{"label":"办理流程/所需资料","value":"持有结算账户→财务需要分析→确定没有任何本行代理的保险计划（即由香港人寿）发行分销之产品）符合需要及已同意被专介予保险经纪公司为其提供保险经纪人服务。"},{"label":"费用/利率/定价说明","value":"保费及分红以产品条款及当日公布为准。"}],"advantages":"1. 保障与传承：提供身故赔偿，支持财富顺利传承。\n2. 多币种灵活性：支持港元及外币缴付，满足跨境需求。\n3. 长期资产配置：兼具保障与投资价值，助力财富稳健增长。","risk":"健康核保、退保损失、汇率风险（外币保单）、分红/投资回报不保证。","process":"持有结算账户→财务需要分析→确定没有任何本行代理的保险计划（即由香港人寿）发行分销之产品）符合需要及已同意被专介予保险经纪公司为其提供保险经纪人服务。","note":"","officialUrl":"https://www.chbank.com/tc/personal/index.shtml","officialSpecific":false},
+            {"id":"CHB-03-06","provider":"创兴银行","category":"财富管理","name":"一般保险 (财产及意外保险）","summary":"提供财产、意外及生活风险的保障，覆盖日常及突发事件造成的经济损失。","audience":"内地居民及港澳居民","scenario":"个人意外、旅游保障、家居财产保护、汽车意外、楼宇按揭火险。","journey":"投资与增值","core":false,"details":[{"label":"币种","value":"港元"},{"label":"门槛/额度","value":"最低保额以币种及产品计划为准，具体详见产品说明书"},{"label":"期限","value":"按所选产品"},{"label":"办理渠道","value":"经分行转介服务"},{"label":"办理流程/所需资料","value":"持有结算账户→选择产品→同意被专介予保险公司为其提供保险经纪人服务。"},{"label":"费用/利率/定价说明","value":"保费以产品条款及当日公布为准；保障额度及免赔额以产品说明为准。"}],"advantages":"覆盖旅游、家居、汽车、企业等多类生活与财产风险，满足多场景需求。","risk":"保障范围及除外责任、续保条件、汇率风险（外币保单）、理赔需提供相关证明文件。","process":"持有结算账户→选择产品→同意被专介予保险公司为其提供保险经纪人服务。","note":"","officialUrl":"https://www.chbank.com/tc/personal/index.shtml","officialSpecific":false},
+            {"id":"CHB-03-07","provider":"创兴银行","category":"财富管理","name":"「自由息」外币挂钩存款","summary":"按客户对汇率预期，以存款+期权组合提升潜在收益","audience":"内地居民及港澳居民","scenario":"对交易币种具一定预期并能接受到期时持有挂钩货币\n提升潜在收益\n客户需持有外币账户和投资账户","journey":"投资与增值","core":false,"details":[{"label":"币种","value":"港元及多种外币"},{"label":"门槛/额度","value":"最低单笔交易金额为等值8万港元(分行渠道)和等值2万港元(电子渠道)"},{"label":"期限","value":"多期限可选"},{"label":"办理渠道","value":"网上银行、流动理财或分行"},{"label":"办理流程/所需资料","value":"持有投资账户→完成风险及脆弱客户评估问卷/对衍生产品的认识→选择存款货币→选择挂钩货币/金额/期限/协定汇率/合约存款利率→完成交易"},{"label":"费用/利率/定价说明","value":"没有交易手续费。\n协定汇率/合约存款利率以交易时认结果为准"}],"advantages":"可自由设货币投资组合、执行汇率以及存款期限\n潜在回报高于一般定期存款","risk":"不受存款保障计划保障、衍生工具、潜在收益有限、非保本产品、市场、流动性、信用、货币、提早终止、条款调整、离岸人民币政策、集中投资、无售后冷静期。","process":"持有投资账户→完成风险及脆弱客户评估问卷/对衍生产品的认识→选择存款货币→选择挂钩货币/金额/期限/协定汇率/合约存款利率→完成交易","note":"","officialUrl":"https://www.chbank.com/tc/personal/index.shtml","officialSpecific":false},
+            {"id":"CHB-03-08","provider":"创兴银行","category":"财富管理","name":"外币挂钩投资","summary":"按客户对汇率预期，以存款+掉期提升潜在收益","audience":"内地居民及港澳居民","scenario":"持有至到期保本型的资产配置\n提升潜在收益\n客户需持有外币账户和投资账户","journey":"投资与增值","core":false,"details":[{"label":"币种","value":"港元及多种外币"},{"label":"门槛/额度","value":"最低单笔投资金额：等值10万港元"},{"label":"期限","value":"多期限可选"},{"label":"办理渠道","value":"网上银行、流动理财或分行"},{"label":"办理流程/所需资料","value":"持有投资账户→完成风险及脆弱客户评估问卷/对衍生产品的认识→选择存款货币→选择挂钩货币/金额/期限/初始汇率/远期汇率/挂钩货币利率→完成交易"},{"label":"费用/利率/定价说明","value":"没有交易手续费。\n初始汇率/远期汇率/挂钩货币利率以交易时认结果为准"}],"advantages":"可自由设货币投资组合、执行汇率以及存款期限\n潜在回报高于一般定期存款\n保本型结构满足偏好低风险的投资者需求","risk":"不受存款保障计划保障、衍生工具、潜在收益有限、仅于到期时保本、流动性、信用、货币、提早终止、条款调整、离岸人民币政策、集中投资。","process":"持有投资账户→完成风险及脆弱客户评估问卷/对衍生产品的认识→选择存款货币→选择挂钩货币/金额/期限/初始汇率/远期汇率/挂钩货币利率→完成交易","note":"","officialUrl":"https://www.chbank.com/tc/personal/index.shtml","officialSpecific":false},
+            {"id":"CHB-03-09","provider":"创兴银行","category":"财富管理","name":"外币挂钩投资","summary":"按客户对汇率预期，以存款+期权组合提升潜在收益","audience":"内地居民及港澳居民","scenario":"对交易币种具一定预期\n提升潜在收益\n不同产品结构适用于不同场景\n客户需持有外币账户和投资账户","journey":"投资与增值","core":false,"details":[{"label":"币种","value":"港元及多种外币"},{"label":"门槛/额度","value":"最低单笔投资金额：等值150万港元"},{"label":"期限","value":"多期限可选"},{"label":"办理渠道","value":"创兴银行分行"},{"label":"办理流程/所需资料","value":"持有投资账户→完成风险及脆弱客户评估问卷/对衍生产品的认识→选择存款货币→选择挂钩货币/金额/期限/现货汇率/行使汇率/触价失效汇率→完成交易"},{"label":"费用/利率/定价说明","value":"没有交易手续费。\n现货汇率/行使汇率/触价失效汇率以交易时认结果为准"}],"advantages":"可自由设货币投资组合、执行汇率以及存款期限\n潜在回报高于一般定期存款","risk":"不受存款保障计划保障、衍生工具、潜在收益有限、仅于到期时保本、流动性、信用、货币、提早终止、条款调整、离岸人民币政策、集中投资。","process":"持有投资账户→完成风险及脆弱客户评估问卷/对衍生产品的认识→选择存款货币→选择挂钩货币/金额/期限/现货汇率/行使汇率/触价失效汇率→完成交易","note":"","officialUrl":"https://www.chbank.com/tc/personal/index.shtml","officialSpecific":false},
+            {"id":"CHB-03-10","provider":"创兴银行","category":"财富管理","name":"零售债券","summary":"向债券发行人“借出”资金，换取稳定票息和到期还本的收益","audience":"内地居民及港澳居民","scenario":"对利率走势具一定预期\n需要稳定投资回报及稳定现金流\n客户需持有外币账户和投资账户","journey":"投资与增值","core":false,"details":[{"label":"币种","value":"港元及多种外币"},{"label":"门槛/额度","value":"最低单笔投资金额：等值50万港元"},{"label":"期限","value":"多期限可选"},{"label":"办理渠道","value":"创兴银行分行。年底前将新增网上银行、流动理财渠道"},{"label":"办理流程/所需资料","value":"持有投资账户→选择投资债券/金额/到期日/利率/价格→完成交易"},{"label":"费用/利率/定价说明","value":"二手市场买入或赎回之债券：最高1%\n首次公开发售之新债认购：根据每次发售时所公布之收费为准\n托管服务：0.05%/年（如持有属永续性质的债券）\n债券转入费/转出费：没有交易收费"}],"advantages":"潜在回报高于一般定期存款\n提供持续及可预料的债息收入\n当债券价格上升，投资者可获得资本增值","risk":"信贷、利率、汇率、流动性、股票（可换股或可转换债券）、再投资、离岸人民币政策（人民币债券）","process":"持有投资账户→选择投资债券/金额/到期日/利率/价格→完成交易","note":"","officialUrl":"https://www.chbank.com/tc/personal/index.shtml","officialSpecific":false},
+            {"id":"CHB-03-11","provider":"创兴银行","category":"财富管理","name":"专业投资者债券","summary":"向债券发行人“借出”资金，换取稳定票息和到期还本的收益","audience":"内地居民及港澳居民","scenario":"对利率走势具一定预期\n需要稳定投资回报及稳定现金流\n客户需持有私人银行及投资账户","journey":"投资与增值","core":false,"details":[{"label":"币种","value":"港元及多种外币"},{"label":"门槛/额度","value":"最低单笔投资金额：等值20万美元"},{"label":"期限","value":"多期限可选"},{"label":"办理渠道","value":"创兴银行私人银行"},{"label":"办理流程/所需资料","value":"持有创兴银行私人银行及投资账户→选择投资债券/金额/到期日/利率/价格→完成交易"},{"label":"费用/利率/定价说明","value":"二手市场买入或赎回之债券：最高1%\n首次公开发售之新债认购：根据每次发售时所公布之收费为准\n托管服务：0.05%/年（如持有属永续性质的债券）\n债券转入费/转出费：没有交易收费"}],"advantages":"潜在回报高于一般定期存款\n提供持续及可预料的债息收入\n当债券价格上升，投资者可获得资本增值","risk":"信贷、利率、汇率、流动性、股票（可换股或可转换债券）、再投资、离岸人民币政策（人民币债券）","process":"持有创兴银行私人银行及投资账户→选择投资债券/金额/到期日/利率/价格→完成交易","note":"","officialUrl":"https://www.chbank.com/tc/personal/index.shtml","officialSpecific":false},
+            {"id":"CHB-03-12","provider":"创兴银行","category":"财富管理","name":"股票挂钩票据","summary":"按客户对挂钩股票的预期，以存款+期权组合提升潜在收益","audience":"内地居民及港澳居民","scenario":"对挂钩股票具一定预期\n提升潜在收益\n不同产品结构适用于不同场景\n客户需持有私人银行及投资账户","journey":"投资与增值","core":false,"details":[{"label":"币种","value":"港元及多种外币"},{"label":"门槛/额度","value":"最低单笔投资金额：等值20万美元"},{"label":"期限","value":"多期限可选"},{"label":"办理渠道","value":"创兴银行私人银行"},{"label":"办理流程/所需资料","value":"持有创兴银行私人银行及投资账户→选择存款货币→选择挂钩股票/金额/期限→确认协定买入价格特/合约存款利率→完成交易"},{"label":"费用/利率/定价说明","value":"交易手续费：最高2.5%"}],"advantages":"潜在回报高于一般定期存款\n策略灵活，可挂钩单只或多只股票、执行价格以及存款期限","risk":"不受存款保障计划保障、衍生工具、潜在收益有限、非保本产品、市场、流动性、信用、货币、操作、利率、通胀、离岸人民币政策、法律。","process":"持有创兴银行私人银行及投资账户→选择存款货币→选择挂钩股票/金额/期限→确认协定买入价格特/合约存款利率→完成交易","note":"","officialUrl":"https://www.chbank.com/tc/personal/index.shtml","officialSpecific":false},
+            {"id":"CHB-03-13","provider":"创兴银行","category":"财富管理","name":"纸黄金计划","summary":"无须持有实物黄金，把握黄金价格波动带来的机遇","audience":"内地居民及港澳居民","scenario":"无需通过实物交收参与黄金市场投资\n通过黄金抵御通胀、对冲风险\n客户需持有外币账户和纸黄金账户","journey":"投资与增值","core":false,"details":[{"label":"币种","value":"港元、美元、人民币"},{"label":"门槛/额度","value":"最低单笔交易数量为0.1个单位，其后以0.1个单位递增"},{"label":"期限","value":"实时/近实时，到账时间以实际为准"},{"label":"办理渠道","value":"网上银行、流动理财或分行"},{"label":"办理流程/所需资料","value":"持有纸黄金账户→选择买入金额/货币/价格→完成交易"},{"label":"费用/利率/定价说明","value":"没有交易手续费。\n价格以交易时认结果为准"}],"advantages":"分散投资风险、对抗通胀、作为避险资产、无须实物交收。","risk":"不受存款保障计划保障、非保本产品、市场、汇率、流动性、信用、货币、暂停交易、提早终止、离岸人民币政策。","process":"持有纸黄金账户→选择买入金额/货币/价格→完成交易","note":"","officialUrl":"https://www.chbank.com/tc/personal/index.shtml","officialSpecific":false},
+            {"id":"CHB-04-01","provider":"创兴银行","category":"账户与支付","name":"跨境支付通","summary":"面向个人客户的跨境汇款服务。","audience":"内地居民及港澳居民","scenario":"内地与香港两地日常生活费，包括物业租务及医疗费用，跨境汇付费用或收取住宅租金","journey":"开户与通行","core":true,"details":[{"label":"币种","value":"人民币"},{"label":"门槛/额度","value":"[北向] 每日限额：HKD1万，视乎客户的设定；年度限额：HKD20万"},{"label":"期限","value":"实时/近实时，到账时间以实际为准"},{"label":"办理渠道","value":"网上银行及流动理财"},{"label":"办理流程/所需资料","value":"填写收付款信息→确认汇率/费用→提交→到账。"},{"label":"费用/利率/定价说明","value":"手续费、汇率及优惠以办理时银行公告为准。"}],"advantages":"手机或账户信息发起；跨境人民币结算; $0 手续费","risk":"由香港至内地的「跨境支付通」(北向)转账仅适用于香港身份证持有人。\n汇率波动、额度限制、反洗钱审查、资料错误及到账延迟风险。","process":"填写收付款信息→确认汇率/费用→提交→到账。","note":"","officialUrl":"https://www.chbank.com/tc/personal/banking-services/other-services/payment-connect/index.shtml","officialSpecific":true},
+            {"id":"CHB-04-02","provider":"创兴银行","category":"账户与支付","name":"转账/转数快","summary":"香港跨行转账服务","audience":"内地居民及港澳居民","scenario":"香港转账的需求","journey":"开户与通行","core":false,"details":[{"label":"币种","value":"港币/人民币"},{"label":"门槛/额度","value":"每日最高累积限额如下，视乎客户的设定：\n- 小额转账 HKD1万\n- 未登记收款人 HKD10万\n- 已登记收款人 HKD100万"},{"label":"期限","value":"实时/近实时，到账时间以实际为准"},{"label":"办理渠道","value":"网上银行及流动理财"},{"label":"办理流程/所需资料","value":"填写收付款信息→确认资料→提交→到账。"},{"label":"费用/利率/定价说明","value":"$0手续费，以办理时银行公告为准。"}],"advantages":"实时跨行转账; 7×24 ; 多种收款方式无需对外透露个人账户数据","risk":"额度限制、反洗钱审查、资料错误及到账延迟风险。","process":"填写收付款信息→确认资料→提交→到账。","note":"","officialUrl":"https://www.chbank.com/tc/personal/index.shtml","officialSpecific":false},
+            {"id":"CHB-04-03","provider":"创兴银行","category":"账户与支付","name":"汇款服务","summary":"透过本地／国际支付网络以电子方式转账至本地／海外收款人账户","audience":"内地居民及港澳居民","scenario":"透过遍布全球的银行伙伴网络，无论客户的亲友或业务覆盖世界各地，都可为客户轻松及安全地管理资金调配","journey":"资金管理与汇兑","core":false,"details":[{"label":"币种","value":"港元及多种外币"},{"label":"门槛/额度","value":"香港个人客户：每位客户每天最高可电汇人民币 80,000 元，其他货币没有限制\n内地个人客户：汇款至内地银行不设上限，唯客户需自行了解收款银行的规则，及提供收款银行的汇款识别代码"},{"label":"期限","value":"不适用"},{"label":"办理渠道","value":"网上银行、流动理财或分行"},{"label":"办理流程/所需资料","value":"于网上银行、流动理财或分行汇款"},{"label":"费用/利率/定价说明","value":"按不同汇款项目有不同手续费，详情可参考https://www.chbank.com/data/media/document/service_charge_20230103.pdf"}],"advantages":"- 提供多达14种货币汇款服务\n- 只需于截数时间前成功办理汇款申请，即可于当日汇出","risk":"不适用","process":"于网上银行、流动理财或分行汇款","note":"","officialUrl":"https://www.chbank.com/tc/personal/index.shtml","officialSpecific":false},
+            {"id":"CHB-05-01","provider":"创兴银行","category":"私人银行","name":"私人银行服务","summary":"面向高资产值或极高资产值个人、家庭及企业客户,提供高私密度、个性化的财富管理及专属银行服务。","audience":"内地居民及港澳居民","scenario":"提供专属服务及客制化财富增值与资产配置服务供个人、家族办公室和家庭信托，应对不同的理财需要、税务规划服务转介、家庭理财及升学安排、传承与退休规划等全面服务","journey":"退休、置业与长期规划","core":true,"details":[{"label":"币种","value":"多币种"},{"label":"门槛/额度","value":"准入门槛为港元8百万"},{"label":"期限","value":"持续服务"},{"label":"办理渠道","value":"私人银行团队、专责投顾及环球家族信托与税务规划专业服务机构与人员"},{"label":"办理流程/所需资料","value":"准入评估→KYC尽职审查及风险评估→需求访谈→方案配置→执行及定期检视与合适性调整。"},{"label":"费用/利率/定价说明","value":"服务收费及产品费用以正式文件为准。"}],"advantages":"为客户提供专属服务及客制化财富增值与资产配置服务，持续保持高度私密性与个人理财与融资组合的定期检视与合适性优化调节","risk":"投资、信用、流动性、汇率、利率、集中度、适当性及跨境合规风险。","process":"准入评估→KYC尽职审查及风险评估→需求访谈→方案配置→执行及定期检视与合适性调整。","note":"","officialUrl":"https://www.chbank.com/tc/personal/index.shtml","officialSpecific":false},
+            {"id":"CHB-06-01","provider":"创兴银行","category":"个人融资","name":"资产抵押贷款","summary":"为财富管理客户提供流动性的抵押融资服务","audience":"内地居民及港澳居民","scenario":"在创兴银行拥有认可抵押品的客户；抵押品种类包括本/外币定期存款、香港上市股票（仅适用于私行客户）、债券、存款证、基金、外币挂钩存款、股票挂钩票据","journey":"退休、置业与长期规划","core":true,"details":[{"label":"币种","value":"港元"},{"label":"门槛/额度","value":"单笔额度最高港币5,000万"},{"label":"期限","value":"按贷款协议"},{"label":"办理渠道","value":"分行"},{"label":"办理流程/所需资料","value":"咨询→提交申请表及相关证明文件→信贷审批→签署文件→建立额度"},{"label":"费用/利率/定价说明","value":"利率、额度成立费、每年年检费，以正式贷款文件为准"}],"advantages":"备用流动资金；额度一经确立，可随借随还。","risk":"利率上升、押品价值浮动、提前还款及抵押品处置风险","process":"咨询→提交申请表及相关证明文件→信贷审批→签署文件→建立额度","note":"","officialUrl":"https://www.chbank.com/tc/personal/index.shtml","officialSpecific":false},
+            {"id":"CHB-06-03","provider":"创兴银行","category":"个人融资","name":"创兴私人贷款","summary":"无抵押消费贷款","audience":"港澳居民","scenario":"有消费性流动资金需求的个人客户","journey":"退休、置业与长期规划","core":false,"details":[{"label":"币种","value":"港元"},{"label":"门槛/额度","value":"单笔贷款额最高港币200万"},{"label":"期限","value":"最长5年"},{"label":"办理渠道","value":"分行/手机APP/网银"},{"label":"办理流程/所需资料","value":"咨询→提交申请表及相关证明文件→信贷审批→确认贷款→提款"},{"label":"费用/利率/定价说明","value":"利率、提前还款手续费"}],"advantages":"无需提供抵押品，申请至贷款提用简单快捷、没有手续费成本","risk":"还款能力，坏账催收风险","process":"咨询→提交申请表及相关证明文件→信贷审批→确认贷款→提款","note":"","officialUrl":"https://www.chbank.com/tc/personal/index.shtml","officialSpecific":false},
+            {"id":"CHB-06-04","provider":"创兴银行","category":"个人融资","name":"创兴税务贷款","summary":"税季期间无抵押消费贷款","audience":"港澳居民","scenario":"有消费性流动资金需求的个人客户","journey":"退休、置业与长期规划","core":false,"details":[{"label":"币种","value":"港元"},{"label":"门槛/额度","value":"单笔贷款额最高港币200万"},{"label":"期限","value":"最长5年"},{"label":"办理渠道","value":"分行/手机APP/网银"},{"label":"办理流程/所需资料","value":"咨询→提交申请表及相关证明文件→信贷审批→确认贷款→提款"},{"label":"费用/利率/定价说明","value":"利率、提前还款手续费"}],"advantages":"无需提供抵押品，申请至贷款提用简单快捷、没有手续费成本","risk":"还款能力，坏账催收风险","process":"咨询→提交申请表及相关证明文件→信贷审批→确认贷款→提款","note":"","officialUrl":"https://www.chbank.com/tc/personal/index.shtml","officialSpecific":false},
+            {"id":"CHB-06-05","provider":"创兴银行","category":"个人融资","name":"「优才客户」及「专才客户」私人贷款","summary":"特定客群无抵押消费贷款","audience":"内地居民及港澳居民（持有相关在港工作签证的内地客群）","scenario":"有消费性流动资金需求并持相关签证在港工作的内地人士","journey":"退休、置业与长期规划","core":false,"details":[{"label":"币种","value":"港元"},{"label":"门槛/额度","value":"单笔贷款额最高港币100万"},{"label":"期限","value":"最长5年"},{"label":"办理渠道","value":"分行"},{"label":"办理流程/所需资料","value":"咨询→提交申请表及相关证明文件→信贷审批→确认贷款→提款"},{"label":"费用/利率/定价说明","value":"利率、提前还款手续费"}],"advantages":"无需提供抵押品，申请至贷款提用简单快捷、没有手续费成本","risk":"还款能力，坏账催收风险","process":"咨询→提交申请表及相关证明文件→信贷审批→确认贷款→提款","note":"","officialUrl":"https://www.chbank.com/tc/personal/index.shtml","officialSpecific":false},
+            {"id":"CHB-06-06","provider":"创兴银行","category":"个人融资","name":"保单融资贷款","summary":"为投保人寿保险提供资金便利","audience":"内地居民及港澳居民","scenario":"为有人寿保险投保需要的客户；抵押品种类包括认可人寿保单","journey":"退休、置业与长期规划","core":false,"details":[{"label":"币种","value":"港元"},{"label":"门槛/额度","value":"单笔贷款额最高港币8000万"},{"label":"期限","value":"按贷款协议"},{"label":"办理渠道","value":"分行"},{"label":"办理流程/所需资料","value":"咨询→提交申请表及相关证明文件→信贷审批→签署文件→建立额度"},{"label":"费用/利率/定价说明","value":"利率、额度成立费、每年年检费用，以正式贷款文件为准"}],"advantages":"投保资金便利、灵活组合、可结合个人现金流规划。","risk":"利率上升、保单价值、还款能力、提前还款及抵押品处置风险。","process":"咨询→提交申请表及相关证明文件→信贷审批→签署文件→建立额度","note":"","officialUrl":"https://www.chbank.com/tc/personal/index.shtml","officialSpecific":false},
+            {"id":"CHB-06-07","provider":"创兴银行","category":"个人融资","name":"一般物业按揭计划","summary":"为香港物业(包括住宅、工商物业)购置或转按提供抵押融资安排。","audience":"内地居民及港澳居民","scenario":"物业购置、现有按揭转按或现金流规划。","journey":"退休、置业与长期规划","core":true,"details":[{"label":"币种","value":"港元"},{"label":"门槛/额度","value":"贷款额及成数按审批、估值和监管要求"},{"label":"期限","value":"按贷款协议"},{"label":"办理渠道","value":"分行/按揭专队渠道"},{"label":"办理流程/所需资料","value":"咨询→提交收入及物业资料→估值与信贷审批→签署文件→放款。"},{"label":"费用/利率/定价说明","value":"利率、现金回赠、费用及罚息期以正式贷款文件为准。"}],"advantages":"购置/转按场景；灵活按揭组合；可结合个人现金流规划。","risk":"利率上升、物业价格、还款能力、提前还款及抵押品处置风险。","process":"咨询→提交收入及物业资料→估值与信贷审批→签署文件→放款。","note":"","officialUrl":"https://www.chbank.com/tc/personal/banking-services/loans/mortgage-loan/index.shtml","officialSpecific":true},
+            {"id":"CHB-07-01","provider":"创兴银行","category":"其他","name":"信用卡发卡及支付","summary":"发给客户以供其在信用额度内以信贷形式购买货品及服务或提取现金贷款于全球接受相关信用卡品牌之商户或提款机","audience":"香港居民(非本港居民，包括内地及澳门身分证持有人，可接受申请，但需特别审批)","scenario":"减少客户于交易时现金支付及找赎之麻烦或安排分期付款，享消费奖赏和优惠，以及本地和全球 24x7 现金预支。","journey":"资金管理与汇兑","core":false,"details":[{"label":"币种","value":"可以港元及人民币结算"},{"label":"门槛/额度","value":"年满18岁及持有香港身份证的香港居民"},{"label":"期限","value":"审批时间视个案而定"},{"label":"办理渠道","value":"在线申请、邮寄或分行"},{"label":"办理流程/所需资料","value":"阅读条款→填写资料→选择卡产品→确认提交→按要求提交申请文件→进行审批→安排制卡及邮寄至客户。"},{"label":"费用/利率/定价说明","value":"各产品利息及服务收费以收费表所列为准。"}],"advantages":"提供Visa、万事达及银联品牌信用卡。","risk":"资料私隐、网络安全、交易欺诈、还款能力及反洗钱审查风险。","process":"阅读条款→填写资料→选择卡产品→确认提交→按要求提交申请文件→进行审批→安排制卡及邮寄至客户。","note":"","officialUrl":"https://www.chbank.com/tc/personal/index.shtml","officialSpecific":false},
+            {"id":"CHB-07-02","provider":"创兴银行","category":"其他","name":"信用卡收单业务","summary":"为特约商户提供电子支付工具以处理各种支付交易并提供安全快速的资金结算服务","audience":"香港居民(非本港居民，包括内地及澳门身分证持有人，可接受申请，但需特别审批)","scenario":"减少客户于交易时现金支付及处理现金之成本。","journey":"资金管理与汇兑","core":false,"details":[{"label":"币种","value":"港元"},{"label":"门槛/额度","value":"商户于香港从事实体及/或网上零售商及持有有效之香港商业登记证"},{"label":"期限","value":"持续服务"},{"label":"办理渠道","value":"专业收单服务销售团队/销售人员"},{"label":"办理流程/所需资料","value":"收集数据及核验身份→KYC/风险评估→签署文件→进行批核及开户→安排为商户设置收单终端机。"},{"label":"费用/利率/定价说明","value":"与商户协商及进行定价，以正式商户合约文件为准"}],"advantages":"收单产品包括：Visa、万事达、银联、支付宝、微信支付、美国运通及易办事等品牌。\n收单渠道：Apple Pay、Google Pay、银联闪 付、云闪付、Visa PayWave、 Mastercard PayPass、 微信支付及支付宝等方式。","risk":"网络安全、交易欺诈、商户业务运营能力及反洗钱审查风险。","process":"收集数据及核验身份→KYC/风险评估→签署文件→进行批核及开户→安排为商户设置收单终端机。","note":"","officialUrl":"https://www.chbank.com/tc/personal/index.shtml","officialSpecific":false},
+            {"id":"CHB-07-03","provider":"创兴银行","category":"其他","name":"商户应收账贷款","summary":"为现有商户提供资金周转方案以应付日常营运所需","audience":"香港居民(非本港居民，包括内地及澳门身分证持有人，可接受申请，但需特别审批)","scenario":"提供小额资金贷款予商户，所需文件较市场一般贷款产品简单","journey":"退休、置业与长期规划","core":false,"details":[{"label":"币种","value":"港元"},{"label":"门槛/额度","value":"现有商户，贷款上限1百万"},{"label":"期限","value":"按贷款协议"},{"label":"办理渠道","value":"专业收单服务销售团队/销售人员"},{"label":"办理流程/所需资料","value":"收集数据及核验身份→KYC/风险评估→签署文件→交予个人信贷部进行批核→到账"},{"label":"费用/利率/定价说明","value":"利率、费用及罚息以正式贷款文件为准。"}],"advantages":"1) 根据商户于本行的收单金额评估, 不需提交财务报表\n2) 申请门坎低，适合初创企业","risk":"零售市场不景气，商户还款能力风险","process":"收集数据及核验身份→KYC/风险评估→签署文件→交予个人信贷部进行批核→到账","note":"","officialUrl":"https://www.chbank.com/tc/personal/index.shtml","officialSpecific":false},
+            {"id":"CHB-07-04","provider":"创兴银行","category":"其他","name":"礼券","summary":"精美礼券，各种节日、喜庆致贺，送给挚爱亲朋","audience":"内地居民及港澳居民","scenario":"精美礼券，各种节日、喜庆致贺，送给挚爱亲朋","journey":"开户与通行","core":false,"details":[{"label":"币种","value":"港币"},{"label":"门槛/额度","value":"不适用"},{"label":"期限","value":"不适用"},{"label":"办理渠道","value":"分行"},{"label":"办理流程/所需资料","value":"于分行购买"},{"label":"费用/利率/定价说明","value":"不适用"}],"advantages":"金额自由选择","risk":"不适用","process":"于分行购买","note":"","officialUrl":"https://www.chbank.com/tc/personal/index.shtml","officialSpecific":false},
+            {"id":"HKL-01-01","provider":"香港人寿","category":"人寿保障","name":"「十全十美」终身保","summary":"10年缴付终身人寿保障，具储蓄功能。","audience":"投保目标为应付不时之需的财务保障及为未来需要储蓄的客户。","scenario":"所有国籍人士\n(包括内地居民及港澳居民)","journey":"家庭保障与财富传承","core":false,"details":[{"label":"保障年期","value":"至受保人100岁"},{"label":"投保门槛/基本条件","value":"投保年龄: 0至70岁\n最低保险金额: 港元 100,000或等值"},{"label":"保证利益","value":"保证现金价值、身故赔偿"},{"label":"创兴银行在售","value":"ü"}],"advantages":"10年缴付终身人寿保障；非保证周年红利及终期红利；可自选附加保障","risk":"汇率风险、流动性风险/ 长期承诺、发行人的信贷风险、市场风险及通胀风险","process":"","note":"有关条款及细则的详情，请参阅香港人寿缮发的保单文件。","officialUrl":"https://www.hklife.com.hk/","officialSpecific":false},
+            {"id":"HKL-01-02","provider":"香港人寿","category":"人寿保障","name":"「晋盈」终身寿险系列","summary":"整付保费终身大额人寿保障，两种保障级别及两种核保选项并附带资产增值功能。","audience":"投保目标为应付不时之需的财务保障及为未来需要储蓄的客户。","scenario":"所有国籍人士\n(包括内地居民及港澳居民)","journey":"家庭保障与财富传承","core":true,"details":[{"label":"保障年期","value":"终身"},{"label":"投保门槛/基本条件","value":"投保年龄: 0至75岁\n最低保险金额: 美元 500,000"},{"label":"保证利益","value":"保证现金价值、身故赔偿"},{"label":"创兴银行在售","value":"ü"}],"advantages":"整付保费终身大额人寿保障；两种保障级别及两种核保选择；保单缮发日之退保发还金额高达总保费之82%","risk":"汇率风险、流动性风险/ 长期承诺、发行人的信贷风险、市场风险及通胀风险","process":"","note":"有关条款及细则的详情，请参阅香港人寿缮发的保单文件。","officialUrl":"https://www.hklife.com.hk/","officialSpecific":false},
+            {"id":"HKL-02-01","provider":"香港人寿","category":"储蓄计划","name":"「挚赏您」终身储蓄保险计划","summary":"３年、６年或９年保费供款年期终身人寿保障，派发保证储蓄现金兼享资产增值功能。","audience":"投保目标为应付不时之需的财务保障及为未来提供定期收入，适合计划长期理财目标的客户。","scenario":"所有国籍人士\n(包括内地居民及港澳居民)","journey":"家庭保障与财富传承","core":false,"details":[{"label":"保障年期","value":"至受保人100岁"},{"label":"投保门槛/基本条件","value":"投保年龄: 0至70岁\n最低基本金额: 港元 60,000或等值"},{"label":"保证利益","value":"保证现金价值、保证储蓄现金、身故赔偿"},{"label":"创兴银行在售","value":"ü"}],"advantages":"短期供款终身人寿保障；保证储蓄现金派发直至保单期满","risk":"汇率风险、流动性风险/ 长期承诺、发行人的信贷风险、市场风险及通胀风险","process":"","note":"有关条款及细则的详情，请参阅香港人寿缮发的保单文件。","officialUrl":"https://www.hklife.com.hk/","officialSpecific":false},
+            {"id":"HKL-02-02","provider":"香港人寿","category":"储蓄计划","name":"「盈惠您」储蓄寿险计划","summary":"3年缴付15年人寿保障，派发定期保证储蓄现金提供资产增值潜力。","audience":"投保目标为应付不时之需的财务保障及为未来提供定期收入，适合计划中长期理财目标的客户。","scenario":"所有国籍人士\n(包括内地居民及港澳居民)","journey":"家庭保障与财富传承","core":false,"details":[{"label":"保障年期","value":"15 年"},{"label":"投保门槛/基本条件","value":"投保年龄: 0至75岁\n最低基本金额: 港元 120,000或等值"},{"label":"保证利益","value":"保证现金价值、保证储蓄现金、身故赔偿"},{"label":"创兴银行在售","value":"ü"}],"advantages":"3年缴付15 年人寿保障；保证储蓄现金派发直至保单期满；可自选附加保障","risk":"汇率风险、流动性风险/ 长期承诺、发行人的信贷风险、市场风险及通胀风险","process":"","note":"有关条款及细则的详情，请参阅香港人寿缮发的保单文件。","officialUrl":"https://www.hklife.com.hk/","officialSpecific":false},
+            {"id":"HKL-02-03","provider":"香港人寿","category":"储蓄计划","name":"「家・创富」储蓄寿险计划","summary":"5年或10年缴付终身人寿保障，派发保证储蓄现金及保证奖赏，特设额外家庭成员身故保障。","audience":"投保目标为应付不时之需的财务保障及为未来提供定期收入，适合计划长期理财目标的客户。","scenario":"所有国籍人士\n(包括内地居民及港澳居民)","journey":"家庭保障与财富传承","core":false,"details":[{"label":"保障年期","value":"至最初受保人100岁"},{"label":"投保门槛/基本条件","value":"投保年龄: 0至70岁\n最低基本金额: 港元 100,000或等值"},{"label":"保证利益","value":"保证现金价值、保证储蓄现金、保证奖赏、身故赔偿"},{"label":"创兴银行在售","value":"ü"}],"advantages":"保证储蓄现金派发直至保单期满；设有保证奖赏；特设家庭成员身故保障","risk":"汇率风险、流动性风险/ 长期承诺、发行人的信贷风险、市场风险及通胀风险","process":"","note":"有关条款及细则的详情，请参阅香港人寿缮发的保单文件。","officialUrl":"https://www.hklife.com.hk/","officialSpecific":false},
+            {"id":"HKL-02-04","provider":"香港人寿","category":"储蓄计划","name":"「盈逸」储蓄寿险计划","summary":"整付保费终身人寿保障，派发保证储蓄现金提供资产增值潜力。","audience":"投保目标为应付不时之需的财务保障及为未来提供定期收入，适合计划长期理财目标的客户。","scenario":"所有国籍人士\n(包括内地居民及港澳居民)","journey":"家庭保障与财富传承","core":false,"details":[{"label":"保障年期","value":"至受保人100岁"},{"label":"投保门槛/基本条件","value":"投保年龄: 0至75岁\n最低基本金额: 港元 500,000或等值"},{"label":"保证利益","value":"保证现金价值、保证储蓄现金、身故赔偿"}],"advantages":"整付保费终身人寿保障 ；保单缮发日之退保发还金额高达总保费之80%；保证储蓄现金派发直至保单期满","risk":"汇率风险、流动性风险/ 长期承诺、发行人的信贷风险、市场风险及通胀风险","process":"","note":"有关条款及细则的详情，请参阅香港人寿缮发的保单文件。","officialUrl":"https://www.hklife.com.hk/","officialSpecific":false},
+            {"id":"HKL-02-05","provider":"香港人寿","category":"储蓄计划","name":"「致富易」(优越)储蓄寿险计划","summary":"2 年缴付20年人寿保障，具资产增值潜力，并提供多项财富传承特点。","audience":"投保目标为应付不时之需的财务保障及为未来需要储蓄，适合计划中长期理财目标的客户。","scenario":"所有国籍人士\n(包括内地居民及港澳居民)","journey":"家庭保障与财富传承","core":false,"details":[{"label":"保障年期","value":"20 年"},{"label":"投保门槛/基本条件","value":"投保年龄: 0至80岁\n最低基本金额: 港元 200,000或等值"},{"label":"保证利益","value":"保证现金价值、身故赔偿"},{"label":"创兴银行在售","value":"ü"}],"advantages":"短期供款可享20年人寿保障；设有预缴保费安排；保单缮发日之退保发还金额高达总保费之80%","risk":"汇率风险、货币风险、流动性风险/ 长期承诺、发行人的信贷风险、市场风险及通胀风险","process":"","note":"有关条款及细则的详情，请参阅香港人寿缮发的保单文件。","officialUrl":"https://www.hklife.com.hk/","officialSpecific":false},
+            {"id":"HKL-02-06","provider":"香港人寿","category":"储蓄计划","name":"「创富未来」多元货币计划","summary":"2年、5年或10年缴付，提供较高潜在回报的终身人寿保障，特设9种保单货币选项及具财富传承功能。","audience":"投保目标为应付不时之需的财务保障及投资，适合计划长期理财目标及接受有投资成份的保险产品的客户","scenario":"所有国籍人士\n(包括内地居民及港澳居民)","journey":"家庭保障与财富传承","core":false,"details":[{"label":"保障年期","value":"至受保人/新受保人130岁"},{"label":"投保门槛/基本条件","value":"投保年龄: 0至80岁\n最低基本金额: 港元 240,000或等值"},{"label":"保证利益","value":"保证现金价值、身故赔偿"},{"label":"创兴银行在售","value":"ü"}],"advantages":"提供较高潜在回报；9 种保单货币可供转换；配备失去行为能力保障及多项财富传承特点","risk":"汇率风险、货币风险、行使转换保单货币选项之风险、流动性风险/ 长期承诺、发行人的信贷风险、市场风险、通胀风险及不保事项","process":"","note":"有关条款及细则的详情，请参阅香港人寿缮发的保单文件。","officialUrl":"https://www.hklife.com.hk/","officialSpecific":false},
+            {"id":"HKL-02-07","provider":"香港人寿","category":"储蓄计划","name":"「致富宝III」储蓄寿险计划","summary":"2年缴付5年期储蓄人寿保障。","audience":"投保目标为应付不时之需的财务保障及为未来需要储蓄，适合计划短期理财目标的客户。","scenario":"所有国籍人士\n(包括内地居民及港澳居民)","journey":"家庭保障与财富传承","core":false,"details":[{"label":"保障年期","value":"5年"},{"label":"投保门槛/基本条件","value":"投保年龄: 0至80岁\n最低基本金额: 港元 50,000或等值"},{"label":"保证利益","value":"保证现金价值、身故赔偿"},{"label":"创兴银行在售","value":"ü"}],"advantages":"2年缴付5年期人寿保障；设有预缴保费安排；保单期满享有100%保证回报","risk":"汇率风险、货币风险、流动性风险/ 长期承诺、发行人的信贷风险及通胀风险","process":"","note":"有关条款及细则的详情，请参阅香港人寿缮发的保单文件。","officialUrl":"https://www.hklife.com.hk/","officialSpecific":false},
+            {"id":"HKL-02-08","provider":"香港人寿","category":"储蓄计划","name":"「御富」储蓄保险计划","summary":"整付保费终身人寿保障，提供较高潜在回报，具资产增值潜力及财富传承功能。","audience":"投保目标为应付不时之需的财务保障及为未来需要储蓄，适合计划长期理财目标的客户。","scenario":"所有国籍人士\n(包括内地居民及港澳居民)","journey":"家庭保障与财富传承","core":true,"details":[{"label":"保障年期","value":"至受保人/新受保人130岁"},{"label":"投保门槛/基本条件","value":"投保年龄: 0至80岁\n最低基本金额: 港元 240,000或等值"},{"label":"保证利益","value":"保证现金价值、身故赔偿"},{"label":"创兴银行在售","value":"ü"}],"advantages":"提供较高潜在回报；保单缮发日之退保发还金额高达总保费之83%；提供失去行为能力保障及多项财富传承特点","risk":"汇率风险、货币风险、行使转换保单货币选项之风险、流动性风险/ 长期承诺、发行人的信贷风险、市场风险、通胀风险及不保事项","process":"","note":"有关条款及细则的详情，请参阅香港人寿缮发的保单文件。","officialUrl":"https://www.hklife.com.hk/tc/products/personal-insurance/savings-plan/wealth-prestige-savings-insurance-plan/index.html","officialSpecific":true},
+            {"id":"HKL-02-09","provider":"香港人寿","category":"储蓄计划","name":"「悦月丰盛」储蓄保险计划","summary":"2年或5年缴付50年人寿保障、每年派发高达基本金额4.3%的非保证每月入息，兼享资产增值及财富传承功能。","audience":"投保目标为应付不时之需的财务保障及为未来提供定期收入，适合计划长期理财目标的客户。","scenario":"所有国籍人士\n(包括内地居民及港澳居民)","journey":"家庭保障与财富传承","core":false,"details":[{"label":"保障年期","value":"50 年"},{"label":"投保门槛/基本条件","value":"投保年龄: 0至75岁\n最低基本金额: 港元 80,000或等值"},{"label":"保证利益","value":"保证现金价值、身故赔偿"},{"label":"创兴银行在售","value":"ü"}],"advantages":"每年派发高达基本金额4.3%的非保证每月入息直至保单期满；提供预支入息保障及意外死亡保障；配备多项财富传承特点","risk":"汇率风险、流动性风险/ 长期承诺、发行人的信贷风险、市场风险及通胀风险及不保事项","process":"","note":"有关条款及细则的详情，请参阅香港人寿缮发的保单文件。","officialUrl":"https://www.hklife.com.hk/","officialSpecific":false},
+            {"id":"HKL-02-10","provider":"香港人寿","category":"储蓄计划","name":"「创富未来」（优越）多元货币保险计划","summary":"2年或5年缴付，提供较高潜在回报的终身人寿保障，特设9种保单货币选项，兼享资产增值及全面财富传承功能。","audience":"投保目标为应付不时之需的财务保障及投资，适合计划长期理财目标及接受有投资成份的保险产品的客户。","scenario":"所有国籍人士\n(包括内地居民及港澳居民)","journey":"家庭保障与财富传承","core":true,"details":[{"label":"保障年期","value":"至受保人/新受保人130岁"},{"label":"投保门槛/基本条件","value":"投保年龄: 0至80岁\n最低基本金额: 港元 240,000或等值"},{"label":"保证利益","value":"保证现金价值、身故赔偿"},{"label":"创兴银行在售","value":"ü"}],"advantages":"提供较高潜在回报；9 种保单货币可供转换；附设保单暂托人安排、失去行为能力保障及多项财富传承特点","risk":"汇率风险、货币风险、行使转换保单货币选项之风险、流动性风险/ 长期承诺、发行人的信贷风险、市场风险、通胀风险及不保事项","process":"","note":"有关条款及细则的详情，请参阅香港人寿缮发的保单文件。","officialUrl":"https://www.hklife.com.hk/","officialSpecific":false},
+            {"id":"HKL-02-11","provider":"香港人寿","category":"储蓄计划","name":"「悦享人生」储蓄保险计划","summary":"整付、5年或10年缴付终身人寿保障，每年派发高达基本金额5%的非保证每月入息至保单期满，具有全面养老及财富传承功能。","audience":"投保目标为应付不时之需的财务保障及投资，适合计划长期理财目标及接受有投资成份的保险产品的客户。","scenario":"所有国籍人士\n(包括内地居民及港澳居民)","journey":"退休、置业与长期规划","core":true,"details":[{"label":"保障年期","value":"至受保人/新受保人130岁"},{"label":"投保门槛/基本条件","value":"投保年龄: 30岁至80岁最低基本金额: 港元 300,000或等值起"},{"label":"保证利益","value":"保证现金价值、身故赔偿"},{"label":"创兴银行在售","value":"ü"}],"advantages":"每年派发高达基本金额5%的非保证每月入息至保单期满；最早于第13个月开始派发非保证每月入息；提供多项养老增值服务及实现可持续现金流","risk":"汇率风险、货币风险、行使转换保单货币选项之风险、流动性风险/ 长期承诺、发行人的信贷风险、市场风险、通胀风险及不保事项","process":"","note":"有关条款及细则的详情，请参阅香港人寿缮发的保单文件。","officialUrl":"https://www.hklife.com.hk/","officialSpecific":false},
+            {"id":"HKL-03-01","provider":"香港人寿","category":"万用寿险","name":"「绰裕V」万用寿险计划","summary":"整付保费终身人寿保障，保单之户口价值每月获派利息，并设有首3年保证派息率，具资产增值功能。","audience":"投保目标为应付不时之需的财务保障及投资，适合以财富增值为目标及接受有投资成份的保险产品的客户。","scenario":"所有国籍人士\n(包括内地居民及港澳居民)","journey":"家庭保障与财富传承","core":true,"details":[{"label":"保障年期","value":"至受保人100岁"},{"label":"投保门槛/基本条件","value":"投保年龄: 0至80岁\n最低基本保费/基本金额: 港元 100,000或等值"},{"label":"保证利益","value":"保证派息率、身故赔偿"},{"label":"创兴银行在售","value":"ü"}],"advantages":"保单缮发日之退保发还金额高达总保费之92%；每月获派利息（首3年保证派息率及后续恒常派息率）；特设提取安排让资金调配更有弹性","risk":"汇率风险、流动性风险/ 长期承诺、发行人的信贷风险、非保证利益及通胀风险","process":"","note":"有关条款及细则的详情，请参阅香港人寿缮发的保单文件。","officialUrl":"https://www.hklife.com.hk/tc/products/personal-insurance/universal-life-plan/prosperity-v-universal-life-plan/index.html","officialSpecific":true},
+            {"id":"HKL-04-01","provider":"香港人寿","category":"定期寿险","name":"有「本」心寿险计划","summary":"5年或10年定期人寿保障，保证续保至75岁、满期可全数退回已缴保费，设有转换权益及可自选附加保障。","audience":"投保目标为应付不时之需的财务保障的客户。","scenario":"所有国籍人士\n(包括内地居民及港澳居民)","journey":"家庭保障与财富传承","core":false,"details":[{"label":"保障年期","value":"5年、10年\n保证续保至受保人75岁"},{"label":"投保门槛/基本条件","value":"投保年龄: 16至65岁\n最低保险金额: 港元 240,000或等值"},{"label":"保证利益","value":"身故赔偿"},{"label":"创兴银行在售","value":"ü"}],"advantages":"保证续保；可退回缴付保费总额；设转换权益和自选附加保障","risk":"汇率风险、流动性风险/ 长期承诺、发行人的信贷风险及通胀风险","process":"","note":"有关条款及细则的详情，请参阅香港人寿缮发的保单文件。","officialUrl":"https://www.hklife.com.hk/","officialSpecific":false},
+            {"id":"HKL-04-02","provider":"香港人寿","category":"定期寿险","name":"更「安」心寿险计划","summary":"1年、5年、10年、20年或30年定期人寿保障，保证续保至100岁、提供末期疾病保障。","audience":"投保目标为应付不时之需的财务保障的客户。","scenario":"所有国籍人士\n(包括内地居民及港澳居民)","journey":"家庭保障与财富传承","core":false,"details":[{"label":"保障年期","value":"1年、5年、10年、20年、30年\n（1年、5年、10年保证续保至受保人100岁）"},{"label":"投保门槛/基本条件","value":"投保年龄: 16至74岁\n最低保险金额: 港元 240,000或等值"},{"label":"保证利益","value":"身故赔偿"},{"label":"创兴银行在售","value":"ü"}],"advantages":"多种保障年期选择；保证续保（适用于1年、5年、10年保障年期）；提供末期疾病保障、转换权益及可自选附加保障","risk":"汇率风险、发行人的信贷风险及通胀风险及不保事项","process":"","note":"有关条款及细则的详情，请参阅香港人寿缮发的保单文件。","officialUrl":"https://www.hklife.com.hk/tc/products/personal-insurance/term-life-plan/life-at-ease-level-term-plan/index.html","officialSpecific":true},
+            {"id":"HKL-04-03","provider":"香港人寿","category":"定期寿险","name":"「安心易」定期寿险计划","summary":"1年、5年或10年人寿保险计划，只供网上投保，无须验身且保证可续保至100岁。","audience":"投保目标为应付不时之需的财务保障的客户。","scenario":"香港居民","journey":"家庭保障与财富传承","core":false,"details":[{"label":"保障年期","value":"1年、5年、10年，保证续保至受保人100岁"},{"label":"投保门槛/基本条件","value":"投保年龄: 18至50岁\n最低保险金额: 港元 100,000"},{"label":"保证利益","value":"身故赔偿"}],"advantages":"三种保障年期选择；保证续保至100岁；投保简便，无须验身","risk":"汇率风险、发行人的信贷风险及通胀风险","process":"","note":"有关条款及细则的详情，请参阅香港人寿缮发的保单文件。","officialUrl":"https://www.hklife.com.hk/","officialSpecific":false},
+            {"id":"HKL-05-01","provider":"香港人寿","category":"退休计划","name":"「悦月赏」年金计划","summary":"１年或３年缴付，只需1年累积期，可选择18年或终身（至100岁）定期收取每月入息。","audience":"投保目标为应付不时之需的财务保障及为未来提供定期收入，适合计划退休及已退休的客户。","scenario":"所有国籍人士\n(包括内地居民及港澳居民)","journey":"退休、置业与长期规划","core":false,"details":[{"label":"保障年期","value":"19年/至受保人100岁"},{"label":"投保门槛/基本条件","value":"投保年龄: 18至85岁\n最低保证每月入息: 港元 1,600或等值"},{"label":"保证利益","value":"保证每月入息、保证现金价值、身故赔偿"},{"label":"创兴银行在售","value":"ü"}],"advantages":"自选保费缴付期及入息期，坐享每月保证入息；提供意外死亡保障。","risk":"汇率风险、流动性风险/ 长期承诺、发行人的信贷风险、市场风险、通胀风险及不保事项","process":"","note":"有关条款及细则的详情，请参阅香港人寿缮发的保单文件。","officialUrl":"https://www.hklife.com.hk/","officialSpecific":false},
+            {"id":"HKL-05-02","provider":"香港人寿","category":"退休计划","name":"「乐享休悠II」延期年金计划","summary":"合资格延期年金保单，符合税务扣减资格，设有不同的保费供款年期、累积期及年金期选项。","audience":"投保目标为应付不时之需的财务保障及为未来提供定期收入，适合计划退休及已退休的客户。","scenario":"所有国籍人士\n(包括内地居民及港澳居民)","journey":"退休、置业与长期规划","core":true,"details":[{"label":"保障年期","value":"15年/20年/至受保人100岁（对应不同计划）"},{"label":"投保门槛/基本条件","value":"投保年龄: 30至75岁\n最低保证每月年金金额: 港元 1,600或等值\n最低缴付保费总额:港元180,000或等值"},{"label":"保证利益","value":"保证每月年金金额、保证奖赏、保证现金价值、身故赔偿"},{"label":"创兴银行在售","value":"ü"}],"advantages":"税务扣减；自选累积期、每月年金金额；提供每月年金金额、保证奖赏，终期红利(非保证)、总内部回报率(非保证)可达4.64%","risk":"汇率风险、流动性风险/ 长期承诺、发行人的信贷风险、市场风险及通胀风险","process":"","note":"有关条款及细则的详情，请参阅香港人寿缮发的保单文件。","officialUrl":"https://www.hklife.com.hk/","officialSpecific":false},
+            {"id":"HKL-06-01","provider":"香港人寿","category":"医疗及危疾","name":"「享誉」医疗计划","summary":"全面的高端医疗保险计划，提供高达港元50,000,000或等值个人终身赔偿限额，保证续保至 100 岁及提供灵活保障地区及自付额选择。","audience":"投保目标为应付不时之需的财务保障及为应付医疗保健需要的客户。","scenario":"所有国籍人士\n(包括内地居民及港澳居民)","journey":"家庭保障与财富传承","core":true,"details":[{"label":"保障年期","value":"1年 （续保至受保人100岁）"},{"label":"投保门槛/基本条件","value":"投保年龄: 0至70岁\n保单货币: 港元或美元"},{"label":"保证利益","value":"个人终身赔偿限额及保单年度赔偿限额、身故赔偿"},{"label":"创兴银行在售","value":"ü"}],"advantages":"高端医疗保障；自选个人终身赔偿限额、自付额及保障地区选择；高达100%无索偿自付额奖赏","risk":"汇率风险、发行人的信贷风险、通胀风险及不保事项","process":"","note":"有关条款及细则的详情，请参阅香港人寿缮发的保单文件。","officialUrl":"https://www.hklife.com.hk/","officialSpecific":false},
+            {"id":"HKL-06-02","provider":"香港人寿","category":"医疗及危疾","name":"「挚健乐」医疗计划 – 基本","summary":"可申请税务扣减的自愿医保认可标准计划，提供实报实销的医疗保障及保证续保至100岁。","audience":"投保目标为应付不时之需的财务保障及为应付医疗保健需要的客户。","scenario":"香港居民","journey":"家庭保障与财富传承","core":false,"details":[{"label":"保障年期","value":"1年 （续保至受保人100岁）"},{"label":"投保门槛/基本条件","value":"投保年龄: 0至80岁\n保单货币: 港元"},{"label":"保证利益","value":"保障表列明之赔偿限额、身故赔偿"},{"label":"创兴银行在售","value":"ü"}],"advantages":"税务扣减；实报实销，续保至受保人 100 岁；全球保障(精神科治疗除外)、不设终身保障及病房级别限制","risk":"自愿医保计划下的税务扣减、产品内容改动、汇率风险、保费调整、发行人的信贷风险、通胀风险、失实陈述或欺诈、终止保单及不保事项","process":"","note":"有关条款及细则的详情，请参阅香港人寿缮发的保单文件。","officialUrl":"https://www.hklife.com.hk/","officialSpecific":false},
+            {"id":"HKL-06-03","provider":"香港人寿","category":"医疗及危疾","name":"「倍健乐」医疗计划","summary":"可申请税务扣减的自愿医保认可灵活计划，提供实报实销的医疗保障及保证续保至100岁，并特设无索偿折扣及可附加额外医疗保障。","audience":"投保目标为应付不时之需的财务保障及为应付医疗保健需要的客户。","scenario":"香港居民","journey":"家庭保障与财富传承","core":false,"details":[{"label":"保障年期","value":"1年 (续保至受保人100岁)"},{"label":"投保门槛/基本条件","value":"投保年龄: 0至80岁\n保单货币: 港元"},{"label":"保证利益","value":"保障表列明之赔偿限额、身故赔偿"},{"label":"创兴银行在售","value":"ü"}],"advantages":"税务扣减；实报实销，终身保障并续保至受保人 100 岁；灵活选择不同保障级别及可附加额外医疗保障 ；提供无索偿折扣","risk":"自愿医保计划下的税务扣减、产品内容改动、汇率风险、保费调整、发行人的信贷风险、通胀风险、失实陈述或欺诈、终止保单及不保事项","process":"","note":"有关条款及细则的详情，请参阅香港人寿缮发的保单文件。","officialUrl":"https://www.hklife.com.hk/","officialSpecific":false},
+            {"id":"HKL-06-04","provider":"香港人寿","category":"医疗及危疾","name":"「家．守护」保费回赠住院现金保障计划","summary":"10年期住院入息保障，涵盖个人及家庭成员住院入息保障、提供保费回赠及额外无索偿奖赏。","audience":"投保目标为应付不时之需的财务保障及为应付医疗保健需要的客户。","scenario":"所有国籍人士\n(包括内地居民及港澳居民)","journey":"家庭保障与财富传承","core":false,"details":[{"label":"保障年期","value":"10 年"},{"label":"投保门槛/基本条件","value":"投保年龄: 0至60岁\n保单货币: 港元"},{"label":"保证利益","value":"住院利益给付表列明之保障金额，身故赔偿"},{"label":"创兴银行在售","value":"ü"}],"advantages":"自选每日住院入息保障级别；保费回赠及无索偿奖赏；市场首创家庭每日住院入息保障","risk":"汇率风险、流动性风险/ 长期承诺、发行人的信贷风险、通胀风险及不保事项","process":"","note":"有关条款及细则的详情，请参阅香港人寿缮发的保单文件。","officialUrl":"https://www.hklife.com.hk/","officialSpecific":false},
+            {"id":"HKL-06-05","provider":"香港人寿","category":"医疗及危疾","name":"「家・创健」危疾保险计划","summary":"10年或20年缴付包含危疾、人寿及储蓄的终身保险方案，涵盖118种疾病、并提供深切治疗、家庭癌症保障，无须验身。","audience":"投保目标为应付不时之需的财务保障及为应付医疗保健需要的客户。","scenario":"内地主要城市(北京、上海、广州及深圳)居民及香港居民","journey":"家庭保障与财富传承","core":true,"details":[{"label":"保障年期","value":"至受保人100岁"},{"label":"投保门槛/基本条件","value":"投保年龄: 0至65岁\n最低保险金额: 港元 100,000或等值"},{"label":"保证利益","value":"保证现金价值、危疾保障赔偿、身故赔偿"},{"label":"创兴银行在售","value":"ü"}],"advantages":"118种疾病保障；提供深切治疗保障、家庭癌症保障、健康检查服务及健保管家服务；无须验身","risk":"汇率风险、流动性风险/ 长期承诺、发行人的信贷风险、市场风险、通胀风险及不保事项","process":"","note":"有关条款及细则的详情，请参阅香港人寿缮发的保单文件。","officialUrl":"https://www.hklife.com.hk/","officialSpecific":false},
+            {"id":"YXS-01","provider":"越秀证券","category":"证券交易","name":"开立账户","summary":"为客户提供香港、海外市场证券户口开户服务。","audience":"内地居民及港澳居民","scenario":"开设香港、海外市场账户。","journey":"开户与通行","core":true,"details":[{"label":"市场/标的范围","value":"香港、海外证券市场"},{"label":"账户/资格要求","value":"证券账户、KYC及适当性要求"},{"label":"币种/结算","value":"港币、美元"},{"label":"交易/服务模式","value":"线上/人工"},{"label":"费用/佣金/利率","value":"佣金、平台费、交易征费等以最新收费表为准"},{"label":"办理流程/所需资料","value":"客户联系客户经理，提供相关资料开设账户"}],"advantages":"港股交易；账户及结算服务；持仓查询。","risk":"合规风险","process":"客户联系客户经理，提供相关资料开设账户","note":"","officialUrl":"https://www.yxsh.hk/main/zqyw/CompanyOverview/index.shtml","officialSpecific":false},
+            {"id":"YXS-01-02","provider":"越秀证券","category":"证券交易","name":"二级市场交易","summary":"为客户提供香港、海外市场证券交易及相关账户服务。","audience":"内地居民及港澳居民","scenario":"配置港股、管理香港资本市场持仓。","journey":"投资与增值","core":true,"details":[{"label":"市场/标的范围","value":"香港、海外证券市场"},{"label":"账户/资格要求","value":"证券账户、KYC及适当性要求"},{"label":"币种/结算","value":"港币、美元"},{"label":"交易/服务模式","value":"线上/人工"},{"label":"费用/佣金/利率","value":"佣金、平台费、交易征费等以最新收费表为准"},{"label":"办理流程/所需资料","value":"客户存入资金，开展证券交易"}],"advantages":"海外证券交易。除提供香港交易所上市证券类产品、结构性产品和债券产品交易服务外，亦提供沪港通、深港通股票交易服务、海外市场的上市证券类产品和债券产品交易服务","risk":"操作风险、内部管理风险、流动性风险、合规风险","process":"客户存入资金，开展证券交易","note":"","officialUrl":"https://www.yxsh.hk/main/zqyw/CompanyOverview/index.shtml","officialSpecific":false},
+            {"id":"YXS-01-03","provider":"越秀证券","category":"证券交易","name":"孖展融资服务","summary":"为客户提供证券交易的融资杠杆服务","audience":"内地居民及港澳居民","scenario":"看好市场行情，希望通过杠杆放大投资收益，进行港股、海外证券交易","journey":"投资与增值","core":true,"details":[{"label":"市场/标的范围","value":"香港证券市场"},{"label":"账户/资格要求","value":"已开立越秀证券账户，完成KYC及适当性评估，符合融资融券资格要求"},{"label":"币种/结算","value":"港币"},{"label":"交易/服务模式","value":"线上/人工"},{"label":"费用/佣金/利率","value":"融资利率、手续费等以最新收费表为准，按实际融资天数计息"},{"label":"办理流程/所需资料","value":"1. 开设孖展账户→2. 客户表达业务需求，越秀证券按相关制度流程进行项目审批并确定质押率及利率等孖展条款→3. 审批通过后，对客户拟买入的股票或账户内的其他质押股票授予融资额度"}],"advantages":"1. 灵活的融资额度，适配不同投资者需求；2. 与证券交易账户无缝衔接，操作便捷；3. 合规的杠杆比例，严控风险","risk":"信用风险、市场风险、流动性风险、操作风险、合规监管风险","process":"1. 开设孖展账户→2. 客户表达业务需求，越秀证券按相关制度流程进行项目审批并确定质押率及利率等孖展条款→3. 审批通过后，对客户拟买入的股票或账户内的其他质押股票授予融资额度","note":"","officialUrl":"https://www.yxsh.hk/main/zqyw/CompanyOverview/index.shtml","officialSpecific":false},
+            {"id":"YXS-01-04","provider":"越秀证券","category":"证券交易","name":"股票/债券一级市场服务","summary":"为投资者提供一级市场打新服务。","audience":"内地居民及港澳居民","scenario":"投资者希望参与一级市场新股/新债认购","journey":"投资与增值","core":true,"details":[{"label":"市场/标的范围","value":"香港证券市场"},{"label":"账户/资格要求","value":"已开立越秀证券账户，完成KYC及适当性评估，符合一级市场认购资格要求"},{"label":"币种/结算","value":"港币、美元"},{"label":"交易/服务模式","value":"线上/人工"},{"label":"费用/佣金/利率","value":"承销费、认购手续费等以最新收费表为准"},{"label":"办理流程/所需资料","value":"1. 开立账户→2. 参与路演→3. 提交认购申请→4. 中签分配→5. 缴款结算"}],"advantages":"一级市场具有丰厚回报的巨大潜力；通过越秀证券路演撮合以及研究支持，促进发行人顺利发行，争取投资人获得分配","risk":"1. 承销风险；2. 发行人违约风险；3. 操作风险","process":"1. 开立账户→2. 参与路演→3. 提交认购申请→4. 中签分配→5. 缴款结算","note":"","officialUrl":"https://www.yxsh.hk/main/zqyw/CompanyOverview/index.shtml","officialSpecific":false}
+        ];
+
+        const P = window.PRODUCTS,
+              J = ["全部旅程", "开户与通行", "资金管理与汇兑", "投资与增值", "家庭保障与财富传承", "退休、置业与长期规划"],
+              V = ["全部机构", "创兴银行", "香港人寿", "越秀证券"];
+              
+        const s = { q: "", provider: "全部机构", journey: "全部旅程", core: false, limit: 18, selected: null };
+        
+        const esc = x => String(x ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+        const nl = x => esc(x).replace(/\n/g, "<br>");
+
+        function filtered() {
+            let q = s.q.toLowerCase();
+            return P.filter(p => 
+                (!q || [p.id, p.name, p.summary, p.category, p.provider, p.journey, p.audience, p.scenario].join(" ").toLowerCase().includes(q)) &&
+                (s.provider === "全部机构" || p.provider === s.provider) &&
+                (s.journey === "全部旅程" || p.journey === s.journey) &&
+                (!s.core || p.core)
+            );
+        }
+
+        function tags(p) {
+            return `<div class="tags"><span>${esc(p.provider)}</span><span>${esc(p.journey)}</span>${p.core ? "<b>核心</b>" : ""}</div>`;
+        }
+
+        function card(p) {
+            return `<article class="product ${esc(p.provider)}" onclick="openModal('${esc(p.id)}')">
+                ${tags(p)}
+                <small>${esc(p.id)} · ${esc(p.category)}</small>
+                <h3>${esc(p.name)}</h3>
+                <p>${esc(p.summary)}</p>
+                <div class="aud"><b>适合</b><span>${esc(p.audience || p.scenario)}</span></div>
+                <button type="button">查看完整资料 <span>→</span></button>
+            </article>`;
+        }
+
+        function shell() {
+            // PDF Fallback handling - Provide a relative path or an absolute URL if hosted externally.
+            // Using the filename provided in prompt context.
+            const pdfUrl = "越秀金融产品手册-2026.pdf"; 
+
+            document.querySelector("#app").innerHTML = `
+                <header>
+                    <div class="brand">
+                        <i></i>
+                        <div><strong>越秀集团</strong><small>跨境财富管理产品库</small></div>
+                    </div>
+                    <nav>
+                        <a href="#products">浏览产品</a>
+                        <a href="${pdfUrl}" target="_blank">正式产品手册</a>
+                    </nav>
+                </header>
+                <section class="hero">
+                    <div class="hero-copy">
+                        <p class="eyebrow">YUEXIU CROSS-BORDER WEALTH</p>
+                        <h1>一站查阅<br><em>完整产品清单</em></h1>
+                        <p>承接纸质手册未展开的全部产品，集中提供最新资格、参数、正式资料及查询办理入口。</p>
+                        <div class="actions">
+                            <a class="primary" href="#products">查看全部 ${P.length} 项产品</a>
+                            <a class="secondary" href="${pdfUrl}" target="_blank">打开2026产品手册</a>
+                        </div>
+                    </div>
+                    <div class="hero-card">
+                        <span>数据基准</span>
+                        <b>2026.07.21</b>
+                        <div>
+                            <strong>${P.length}</strong><small>全部产品</small>
+                        </div>
+                        <div>
+                            <strong>${P.filter(p=>p.core).length}</strong><small>手册核心产品</small>
+                        </div>
+                        <div>
+                            <strong>3</strong><small>服务机构</small>
+                        </div>
+                    </div>
+                </section>
+                <section class="journeys">
+                    <p>按五大财富旅程查找</p>
+                    <div>
+                        ${J.slice(1).map((j, i) => `<button type="button" data-journey="${esc(j)}"><span>0${i + 1}</span>${esc(j)}</button>`).join("")}
+                    </div>
+                </section>
+                <section id="products" class="catalog">
+                    <div class="title">
+                        <div>
+                            <p class="eyebrow">DYNAMIC PRODUCT LIBRARY</p>
+                            <h2>全部产品</h2>
+                        </div>
+                        <p id="count"></p>
+                    </div>
+                    <div class="filters">
+                        <label class="search">
+                            <span>⌕</span>
+                            <input id="search" aria-label="搜索产品" placeholder="搜索产品名称、编号、场景或关键词">
+                        </label>
+                        <select id="provider" aria-label="选择机构">
+                            ${V.map(x => `<option>${esc(x)}</option>`).join("")}
+                        </select>
+                        <select id="journey" aria-label="选择旅程">
+                            ${J.map(x => `<option>${esc(x)}</option>`).join("")}
+                        </select>
+                        <label class="toggle">
+                            <input id="core" type="checkbox">
+                            只看手册核心产品
+                        </label>
+                    </div>
+                    <div id="cards" class="grid"></div>
+                    <button id="more" class="more" type="button"></button>
+                </section>
+                <section class="path">
+                    <p class="eyebrow">SERVICE PATH</p>
+                    <h2>从了解，到办理</h2>
+                    <div>
+                        ${[["01", "完整产品清单", `查看${P.length}项产品`], ["02", "最新资格与参数", "以汇总表数据为基准"], ["03", "正式产品小册子", "查阅核心产品手册"], ["04", "联系与办理入口", "前往所属机构官网"]].map(x => `<article><span>${x[0]}</span><b>${x[1]}</b><small>${x[2]}</small></article>`).join("")}
+                    </div>
+                </section>
+                <footer>
+                    <div class="brand inverse">
+                        <i></i>
+                        <div><strong>越秀集团</strong><small>跨境财富管理产品库</small></div>
+                    </div>
+                    <div>
+                        <b>重要提示</b>
+                        <p>本网页为产品信息汇总及查询入口，不构成投资建议、要约或承诺。产品资格、条款、费率、收益、风险及可售状态可能调整，最终以相关机构最新正式文件、风险披露及审批结果为准。</p>
+                    </div>
+                </footer>
+                <div id="modal"></div>
+            `;
+            bind();
+            render();
+        }
+
+        function render() {
+            const a = filtered();
+            const cards = document.querySelector("#cards");
+            document.querySelector("#count").innerHTML = `当前显示 <b>${a.length}</b> 项；所有产品名称及参数均来自最新版汇总表。`;
+            
+            cards.innerHTML = a.length 
+                ? a.slice(0, s.limit).map(card).join("") 
+                : `<div class="empty">没有找到符合条件的产品，请调整筛选条件。</div>`;
+                
+            const more = document.querySelector("#more");
+            more.hidden = a.length <= s.limit;
+            more.textContent = `加载更多（还有 ${Math.max(0, a.length - s.limit)} 项）`;
+        }
+
+        // Expose openModal globally so inline onclick handlers on articles can reach it
+        window.openModal = function(id) {
+            const p = P.find(x => x.id === id);
+            if (!p) return;
+            
+            s.selected = p;
+            
+            // Try updating URL safely, avoid errors if in restricted iframe
+            try {
+                history.replaceState(null, "", `?product=${encodeURIComponent(id)}`);
+            } catch(e) { console.log("History API blocked", e) }
+            
+            document.body.style.overflow = "hidden"; // Prevent background scroll
+            
+            document.querySelector("#modal").innerHTML = `
+                <div class="backdrop" id="modal-backdrop">
+                    <article class="drawer" id="modal-drawer">
+                        <button class="x" aria-label="关闭" type="button" id="modal-close">×</button>
+                        ${tags(p)}
+                        <small>${esc(p.id)} · ${esc(p.category)}</small>
+                        <h2>${esc(p.name)}</h2>
+                        <p class="lead">${esc(p.summary)}</p>
+                        
+                        <h4>适合客户</h4>
+                        <p>${nl(p.audience)}</p>
+                        
+                        <h4>客户场景</h4>
+                        <p>${nl(p.scenario)}</p>
+                        
+                        ${p.details?.length ? `<h4>资格与参数</h4><dl>${p.details.map(d => `<div><dt>${esc(d.label)}</dt><dd>${nl(d.value)}</dd></div>`).join("")}</dl>` : ""}
+                        ${p.advantages ? `<h4>核心优势</h4><p class="pre">${nl(p.advantages)}</p>` : ""}
+                        ${p.process ? `<h4>办理流程／所需资料</h4><p class="pre">${nl(p.process)}</p>` : ""}
+                        ${p.risk ? `<h4>主要风险及提示</h4><p class="risk">${nl(p.risk)}</p>` : ""}
+                        
+                        <section class="official">
+                            <div>
+                                <b>官方查询与办理入口</b>
+                                <small>${p.officialSpecific ? "此链接为正式服务资料。" : "现有汇总表未提供独立产品链接，以下为所属机构官网。"}</small>
+                            </div>
+                            <a href="${esc(p.officialUrl)}" target="_blank" rel="noreferrer">前往官网 ↗</a>
+                        </section>
+                        
+                        ${p.note ? `<p class="note">${nl(p.note)}</p>` : ""}
+                    </article>
+                </div>
+            `;
+            
+            // Setup robust closing mechanisms for mobile
+            const bg = document.getElementById("modal-backdrop");
+            const closeBtn = document.getElementById("modal-close");
+            const drawer = document.getElementById("modal-drawer");
+            
+            closeBtn.addEventListener('click', closeModal);
+            // Touch specific listener to ensure it fires reliably on mobile
+            closeBtn.addEventListener('touchend', function(e) {
+                e.preventDefault(); // Prevent ghost clicks
+                closeModal();
+            });
+
+            bg.addEventListener('click', function(e) {
+                if (e.target === bg) closeModal();
+            });
+            
+            // Prevent clicks inside drawer from closing the modal
+            drawer.addEventListener('click', function(e) {
+                e.stopPropagation();
+            });
+            drawer.addEventListener('touchend', function(e) {
+                e.stopPropagation();
+            });
+        };
+
+        function closeModal() {
+            s.selected = null;
+            try {
+                history.replaceState(null, "", location.pathname);
+            } catch(e){}
+            document.body.style.overflow = ""; // Restore scroll
+            document.querySelector("#modal").innerHTML = "";
+        }
+
+        function bind() {
+            document.querySelector("#search").oninput = e => { s.q = e.target.value; s.limit = 18; render(); };
+            document.querySelector("#provider").onchange = e => { s.provider = e.target.value; s.limit = 18; render(); };
+            document.querySelector("#journey").onchange = e => { s.journey = e.target.value; s.limit = 18; render(); };
+            document.querySelector("#core").onchange = e => { s.core = e.target.checked; s.limit = 18; render(); };
+            document.querySelector("#more").onclick = () => { s.limit += 18; render(); };
+            
+            document.querySelectorAll("[data-journey]").forEach(b => {
+                b.onclick = () => {
+                    s.journey = b.dataset.journey;
+                    document.querySelector("#journey").value = s.journey;
+                    s.limit = 18;
+                    render();
+                    document.querySelector("#products").scrollIntoView({ behavior: "smooth" });
+                };
+            });
+            
+            document.onkeydown = e => {
+                if (e.key === "Escape") closeModal();
+            };
+        }
+
+        // Initialize App
+        shell();
+        
+        // Handle deep linking based on URL parameter
+        try {
+            const deep = new URLSearchParams(location.search).get("product");
+            if (deep) window.openModal(deep);
+        } catch(e){}
+        
+    </script>
+</body>
+</html>
